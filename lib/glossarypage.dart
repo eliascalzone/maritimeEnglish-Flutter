@@ -10,6 +10,8 @@ class Glossarypage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('GLOSSARY SMCP'),
+        titleTextStyle:
+            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       body: Center(
           child: Column(

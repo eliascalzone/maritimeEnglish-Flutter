@@ -23,6 +23,8 @@ class _ShippageState extends State<Shippage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('THE SHIP'),
+        titleTextStyle:
+            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => showDialog(
