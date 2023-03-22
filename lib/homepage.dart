@@ -22,7 +22,7 @@ class Homepage extends StatelessWidget {
                 'What should we learn today?',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                 ),
               )),
           const Padding(

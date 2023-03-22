@@ -40,6 +40,8 @@ class _RootPageState extends State<RootPage> {
         title: const Text(
           'MARITIME ENGLISH',
         ),
+        titleTextStyle:
+            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       body: pages[currentPage],
       bottomNavigationBar: NavigationBar(

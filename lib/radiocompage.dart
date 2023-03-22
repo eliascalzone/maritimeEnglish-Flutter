@@ -10,6 +10,8 @@ class Radiocompage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('RADIO COMMUNICATION'),
+        titleTextStyle:
+            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: () {
