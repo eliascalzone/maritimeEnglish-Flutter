@@ -37,8 +37,8 @@ class _ShippageState extends State<Shippage> {
                           child: const Text('CANCEL')),
                       TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const Radiocompage()));
+                            Navigator.pop(context);
+                            Navigator.pop(context);
                           },
                           child: const Text('YES'))
                     ],
