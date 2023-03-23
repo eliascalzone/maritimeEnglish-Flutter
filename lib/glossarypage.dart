@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/phrasesmcp.dart';
+import 'package:fluttermaritime/praticelisten.dart';
 import 'package:fluttermaritime/settingspage.dart';
 
 class Glossarypage extends StatelessWidget {
@@ -26,8 +27,10 @@ class Glossarypage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              /* Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Settings()));*/
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Practicelisten()));
             },
             child: Image.asset('images/praticelisten.png'),
           )

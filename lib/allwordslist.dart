@@ -73,12 +73,12 @@ const List<Map<String, dynamic>> allwords = [
   },
   {
     'name': 'Casualty ',
-    'mean': 'Here: case of death in an accident or shipping disaster'
+    'mean': 'Case of death in an accident or shipping disaster'
   },
   {
     'name': 'Check (to)',
     'mean':
-        '1. To make sure that equipment etc. is in proper condition or that everything is correct and safe \n2 To regulate motion of a cable, rope or wire when it is running out too fast'
+        '1. To make sure that equipment etc. is in proper condition or that everything is correct and safe \n2. To regulate motion of a cable, rope or wire when it is running out too fast'
   },
   {
     'name': 'Close-coupled towing',
