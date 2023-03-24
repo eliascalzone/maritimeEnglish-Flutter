@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
 
@@ -56,9 +58,9 @@ class _PracticelistenState extends State<Practicelisten> {
                           style: const TextStyle(fontSize: 16),
                         )),
                     Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                            onTap: () {
+                      flex: 1,
+                      child: IconButton(
+                            onPressed: () {
                               setState(() {
                                 currentIndex++;
                                 if (currentIndex >= _list.length) {
@@ -66,7 +68,66 @@ class _PracticelistenState extends State<Practicelisten> {
                                 }
                               });
                             },
-                            child: Image.asset('images/nextbutton.png')))
+                            icon: const Icon(Icons.forward_rounded, size: 50, color: Colors.blue,)
+                          )
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if(currentIndex==0){currentIndex=_list.length-1;}
+                                else {currentIndex--;}
+                              });
+                            },
+                            icon: const Icon(Icons.forward_rounded, size: 50, color: Colors.blue, textDirection: TextDirection.rtl,)
+                          )
+                    ),
+                    ButtonBar(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                                currentIndex = 0;
+                              });
+                          }, 
+                          child: const Text("A")
+                        ),
+                        TextButton(
+                           onPressed: () {
+                            setState(() {
+                                currentIndex = 10;
+                              });
+                           }, 
+                           child: const Text("B")
+                         ),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                                currentIndex = 20;
+                              });
+                          }, 
+                          child: const Text("C")
+                        ),
+                         TextButton(
+                          onPressed: () {
+                            setState(() {
+                                currentIndex = 30;
+                              });
+                          }, 
+                          child: const Text("D")
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                                currentIndex = 40;
+                              });
+                          }, 
+                          child: const Text("E")
+                         ),
+                      ],
+                    )
                   ]),
                 ))));
   }
