@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/radiocompage.dart';
+import 'package:fluttermaritime/shippage1.dart';
 
 class Shippage extends StatefulWidget {
   const Shippage({Key? key, required this.onSubmit}) : super(key: key);
@@ -10,138 +11,252 @@ class Shippage extends StatefulWidget {
 }
 
 class _ShippageState extends State<Shippage> {
-  final _formKey = GlobalKey<FormState>();
-  String _name = '';
+  String _name1 = 'd';
+  String _name2 = 'c';
+  String _name3 = 'a';
+  String _name4 = 'b';
+  String message = '';
+
+  TextEditingController controller1 = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
+  TextEditingController controller3 = TextEditingController();
+  TextEditingController controller4 = TextEditingController();
+
+  bool checkanswer1() {
+    return controller1.text.toLowerCase() == _name1.toLowerCase();
+  }
+
+  bool checkanswer2() {
+    return controller2.text.toLowerCase() == _name2.toLowerCase();
+  }
+
+  bool checkanswer3() {
+    return controller3.text.toLowerCase() == _name3.toLowerCase();
+  }
+
+  bool checkanswer4() {
+    return controller4.text.toLowerCase() == _name4.toLowerCase();
+  }
+
   void _submit() {
-    if (_formKey.currentState!.validate()) {
-      widget.onSubmit(_name);
+    List<String> incorrectAnswers = [];
+    if (!checkanswer1()) {
+      incorrectAnswers.add('Deck - D');
     }
+    if (!checkanswer2()) {
+      incorrectAnswers.add('Propeller - C');
+    }
+    if (!checkanswer3()) {
+      incorrectAnswers.add('Funnel - A');
+    }
+    if (!checkanswer4()) {
+      incorrectAnswers.add('Stern - B');
+    }
+    if (incorrectAnswers.isEmpty) {
+      message = 'Amazing!!';
+    } else {
+      message = 'Incorrect: \n' + incorrectAnswers.join('\n');
+    }
+
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            alignment: Alignment.bottomCenter,
+            actionsAlignment: MainAxisAlignment.center,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            //title: const Text('Result'),
+            content: Text(message),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Shippage1()));
+                },
+                child: Text(
+                  message == 'Amazing!!' ? 'CONTINUE' : 'GOT IT',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: message == 'Amazing!!'
+                          ? Color.fromRGBO(76, 146, 219, 1.0)
+                          : Color.fromRGBO(251, 127, 46, 1.0)),
+                ),
+              ),
+            ],
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('THE SHIP'),
-        titleTextStyle:
-            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () => showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                    title: const Text('Are you sure you want to quit?'),
-                    content:
-                        const Text('All progress in this section will be lost'),
-                    actions: <Widget>[
-                      TextButton(
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                          child: const Text('CANCEL')),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          child: const Text('YES'))
-                    ],
-                  )),
-          icon: const Icon(Icons.close),
+        appBar: AppBar(
+          title: const Text('THE SHIP'),
+          titleTextStyle:
+              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            onPressed: () => showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      title: const Text(
+                        'Are you sure you want to quit?',
+                        style: TextStyle(
+                            color: Color.fromRGBO(76, 146, 219, 1.0),
+                            fontWeight: FontWeight.bold),
+                      ),
+                      content: const Text(
+                          'All progress in this section will be lost'),
+                      actions: <Widget>[
+                        TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text(
+                              'CANCEL',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Radiocompage()),
+                                  (route) => route.isFirst);
+
+                              /*Navigator.pop(context);
+                              Navigator.pop(context);*/
+                            },
+                            child: const Text(
+                              'YES',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ))
+                      ],
+                    )),
+            icon: const Icon(Icons.close),
+          ),
         ),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Center(
-            child: Column(children: [
-          const SizedBox(height: 20),
-          const Text('Type the matching word',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-              )),
-          const SizedBox(height: 20),
-          SizedBox(
-            child: Image.asset('images/shipexe1.png'),
-          ),
-          const SizedBox(height: 30),
-          SizedBox(
-              width: 300,
-              child: Row(
+        body: Center(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Expanded(child: Center(child: Text('Fore deck'))),
-                  SizedBox(
-                    width: 150,
-                    child: TextFormField(
-                      decoration:
-                          const InputDecoration(border: OutlineInputBorder()),
-                      validator: (_name) {
-                        if (_name != 'a' && _name != 'A') {
-                          return 'A';
-                        }
-                        return null;
-                      },
-                      onChanged: (text) => setState(() {
-                        _name = text;
-                      }),
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(height: 10),
-          SizedBox(
-              width: 300,
-              child: Row(
-                children: [
-                  const Expanded(child: Center(child: Text('After deck'))),
-                  SizedBox(
-                    width: 150,
-                    child: TextFormField(
-                      decoration:
-                          const InputDecoration(border: OutlineInputBorder()),
-                      validator: (_name) {
-                        if (_name != 'c' && _name != 'C') {
-                          return 'C';
-                        }
-                        return null;
-                      },
-                      onChanged: (text) => setState(() {
-                        _name = text;
-                      }),
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(height: 10),
-          SizedBox(
-              width: 300,
-              child: Row(
-                children: [
-                  const Expanded(child: Center(child: Text('Accommodation'))),
-                  SizedBox(
-                    width: 150,
-                    child: TextFormField(
-                      decoration:
-                          const InputDecoration(border: OutlineInputBorder()),
-                      validator: (_name) {
-                        if (_name != 'b' && _name != 'B') {
-                          return 'B';
-                        }
-                        return null;
-                      },
-                      onChanged: (text) => setState(() {
-                        _name = text;
-                      }),
-                    ),
-                  ),
-                ],
-              )),
-          const SizedBox(
-            height: 120,
-          ),
-          GestureDetector(
-              onTap: _name.isNotEmpty ? _submit : null,
-              child: Image.asset('images/checkbutton.png'))
-        ])),
-      ),
-    );
+              const Text('Type the matching word',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  )),
+              Image.asset('images/shipexe.png'),
+              Column(children: [
+                SizedBox(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Center(child: Text('Deck')),
+                        SizedBox(
+                          width: 150,
+                          child: TextField(
+                            controller: controller1,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(4.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                )),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Center(child: Text('Propeller')),
+                        SizedBox(
+                          width: 150,
+                          child: TextField(
+                            controller: controller2,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(4.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                )),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Center(child: Text('Funnel')),
+                        SizedBox(
+                          width: 150,
+                          child: TextField(
+                            controller: controller3,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(4.0),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                )),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    )),
+                const SizedBox(
+                  height: 8,
+                ),
+                SizedBox(
+                    width: 300,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Center(child: Text('Stern')),
+                        SizedBox(
+                          width: 150,
+                          child: TextField(
+                            controller: controller4,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(4.0),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20))),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ))
+              ]),
+              ElevatedButton(
+                onPressed: () {
+                  _submit();
+                },
+                style: ButtonStyle(
+                    minimumSize: MaterialStateProperty.all<Size>(Size(
+                      MediaQuery.of(context).size.width * 0.6,
+                      MediaQuery.of(context).size.height * 0.05,
+                    )),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)))),
+                child: const Text(
+                  'CHECK',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ])));
   }
 }

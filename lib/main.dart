@@ -16,7 +16,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: const MaterialColor(
+            0xFF4C92DB,
+            <int, Color>{
+              50: Color.fromRGBO(76, 146, 219, 1.0),
+              100: Color.fromRGBO(76, 146, 219, 1.0),
+              200: Color.fromRGBO(76, 146, 219, 1.0),
+              300: Color.fromRGBO(76, 146, 219, 1.0),
+              400: Color.fromRGBO(76, 146, 219, 1.0),
+              500: Color.fromRGBO(76, 146, 219, 1.0),
+              600: Color.fromRGBO(76, 146, 219, 1.0),
+              700: Color.fromRGBO(76, 146, 219, 1.0),
+              800: Color.fromRGBO(76, 146, 219, 1.0),
+              900: Color.fromRGBO(76, 146, 219, 1.0)
+            },
+          ),
           textTheme: GoogleFonts.openSansTextTheme()),
       home: const RootPage(),
     );
