@@ -1,7 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:fluttermaritime/shippage1.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class Shippage extends StatefulWidget {
   const Shippage({Key? key, required this.onSubmit}) : super(key: key);
@@ -12,6 +14,7 @@ class Shippage extends StatefulWidget {
 }
 
 class _ShippageState extends State<Shippage> {
+  AudioCache audioCache = AudioCache();
   String _name1 = 'd';
   String _name2 = 'c';
   String _name3 = 'a';
@@ -55,8 +58,10 @@ class _ShippageState extends State<Shippage> {
     }
     if (incorrectAnswers.isEmpty) {
       message = 'Amazing!!';
+      audioCache.play('correct.wav');
     } else {
       message = 'Incorrect: \n' + '\n' + incorrectAnswers.join('\n');
+      audioCache.play('incorrect.mp3');
     }
 
     showDialog(

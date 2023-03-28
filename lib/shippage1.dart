@@ -3,6 +3,7 @@ import 'package:fluttermaritime/celebrate.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fluttermaritime/materialdesign.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class Shippage1 extends StatefulWidget {
   const Shippage1({super.key});
@@ -12,6 +13,7 @@ class Shippage1 extends StatefulWidget {
 }
 
 class _Shippage1State extends State<Shippage1> {
+  AudioCache audioCache = AudioCache();
   //Body variable
   final titleText = const Text(
     'Type the matching word',
@@ -64,8 +66,10 @@ class _Shippage1State extends State<Shippage1> {
     }
     if (incorrectAnswers2.isEmpty) {
       message2 = 'Amazing!!';
+      audioCache.play('correct.wav');
     } else {
       message2 = 'Incorrect: \n' + '\n' + incorrectAnswers2.join('\n');
+      audioCache.play('incorrect.mp3');
     }
     showDialog(
         context: context,
