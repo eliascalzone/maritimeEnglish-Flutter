@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaritime/materialdesign.dart';
 import 'allwordslist.dart';
 
 class Phrasesmcp extends StatefulWidget {
@@ -35,6 +36,7 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
       appBar: AppBar(
         title: const Text('GENERAL TERMS'),
         titleTextStyle:
@@ -71,15 +73,11 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
                           child: ListTile(
                             title: Text(
                               _foundwords[index]['name'],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  letterSpacing: 1),
+                              style: body_text_bold,
                             ),
                             subtitle: Text(
                               _foundwords[index]['mean'],
-                              style: const TextStyle(
-                                  fontSize: 16, letterSpacing: 1),
+                              style: body_text,
                             ),
                           ),
                         );

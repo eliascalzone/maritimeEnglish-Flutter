@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttermaritime/celebrate.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:fluttermaritime/materialdesign.dart';
 
 class Shippage1 extends StatefulWidget {
   const Shippage1({super.key});
@@ -14,7 +15,7 @@ class _Shippage1State extends State<Shippage1> {
   //Body variable
   final titleText = const Text(
     'Type the matching word',
-    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    style: textstyle_h2_black,
   );
   var image = Image.asset('images/shipnextexe.png');
   var box = const SizedBox(
@@ -64,7 +65,7 @@ class _Shippage1State extends State<Shippage1> {
     if (incorrectAnswers2.isEmpty) {
       message2 = 'Amazing!!';
     } else {
-      message2 = 'Incorrect: \n' + incorrectAnswers2.join('\n');
+      message2 = 'Incorrect: \n' + '\n' + incorrectAnswers2.join('\n');
     }
     showDialog(
         context: context,
@@ -110,6 +111,7 @@ class _Shippage1State extends State<Shippage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text('THE SHIP'),
@@ -162,15 +164,22 @@ class _Shippage1State extends State<Shippage1> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                titleText,
+                ListTile(
+                    contentPadding: EdgeInsets.only(left: 30),
+                    title: titleText),
                 image,
+                box_height20,
                 Column(children: [
                   SizedBox(
                       width: 300,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(child: Text('Superstructure')),
+                          const Center(
+                              child: Text(
+                            'Superstructure',
+                            style: body_text,
+                          )),
                           SizedBox(
                             width: 150,
                             child: TextFormField(
@@ -191,7 +200,7 @@ class _Shippage1State extends State<Shippage1> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(child: Text('Anchor')),
+                          const Center(child: Text('Anchor', style: body_text)),
                           SizedBox(
                             width: 150,
                             child: TextFormField(
@@ -212,7 +221,11 @@ class _Shippage1State extends State<Shippage1> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(child: Text('Bow')),
+                          const Center(
+                              child: Text(
+                            'Bow',
+                            style: body_text,
+                          )),
                           SizedBox(
                             width: 150,
                             child: TextFormField(
@@ -233,7 +246,11 @@ class _Shippage1State extends State<Shippage1> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(child: Text('Portside')),
+                          const Center(
+                              child: Text(
+                            'Portside',
+                            style: body_text,
+                          )),
                           SizedBox(
                             width: 150,
                             child: TextFormField(

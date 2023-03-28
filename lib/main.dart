@@ -31,7 +31,28 @@ class MyApp extends StatelessWidget {
               900: Color.fromRGBO(76, 146, 219, 1.0)
             },
           ),
-          textTheme: GoogleFonts.openSansTextTheme()),
+          textTheme: GoogleFonts.openSansTextTheme()
+          //.copyWith(
+          /* bodyLarge: TextStyle(
+            fontFamily: GoogleFonts.openSans().fontFamily,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          bodyText1: TextStyle(
+            fontFamily: GoogleFonts.openSans().fontFamily,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(76, 146, 219, 1.0),
+          ),
+          bodyText2: TextStyle(
+            fontFamily: GoogleFonts.openSans().fontFamily,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),*/
+
+          ),
       home: const RootPage(),
     );
   }

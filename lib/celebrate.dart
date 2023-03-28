@@ -9,6 +9,7 @@ class Celebrate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

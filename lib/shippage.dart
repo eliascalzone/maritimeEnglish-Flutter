@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:fluttermaritime/shippage1.dart';
 
@@ -55,7 +56,7 @@ class _ShippageState extends State<Shippage> {
     if (incorrectAnswers.isEmpty) {
       message = 'Amazing!!';
     } else {
-      message = 'Incorrect: \n' + incorrectAnswers.join('\n');
+      message = 'Incorrect: \n' + '\n' + incorrectAnswers.join('\n');
     }
 
     showDialog(
@@ -94,6 +95,7 @@ class _ShippageState extends State<Shippage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         appBar: AppBar(
           title: const Text('THE SHIP'),
           titleTextStyle:
@@ -144,19 +146,25 @@ class _ShippageState extends State<Shippage> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-              const Text('Type the matching word',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
+              const ListTile(
+                  contentPadding: EdgeInsets.only(left: 30),
+                  title: Text(
+                    'Type the matching word',
+                    style: textstyle_h2_black,
                   )),
               Image.asset('images/shipexe.png'),
+              box_height20,
               Column(children: [
                 SizedBox(
                     width: 300,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(child: Text('Deck')),
+                        const Center(
+                            child: Text(
+                          'Deck',
+                          style: body_text,
+                        )),
                         SizedBox(
                           width: 150,
                           child: TextField(
@@ -179,7 +187,11 @@ class _ShippageState extends State<Shippage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(child: Text('Propeller')),
+                        const Center(
+                            child: Text(
+                          'Propeller',
+                          style: body_text,
+                        )),
                         SizedBox(
                           width: 150,
                           child: TextField(
@@ -202,7 +214,11 @@ class _ShippageState extends State<Shippage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(child: Text('Funnel')),
+                        const Center(
+                            child: Text(
+                          'Funnel',
+                          style: body_text,
+                        )),
                         SizedBox(
                           width: 150,
                           child: TextField(
@@ -225,7 +241,11 @@ class _ShippageState extends State<Shippage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(child: Text('Stern')),
+                        const Center(
+                            child: Text(
+                          'Stern',
+                          style: body_text,
+                        )),
                         SizedBox(
                           width: 150,
                           child: TextField(
@@ -240,6 +260,7 @@ class _ShippageState extends State<Shippage> {
                       ],
                     ))
               ]),
+              box_height20,
               ElevatedButton(
                 onPressed: () {
                   _submit();

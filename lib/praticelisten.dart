@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
+import 'package:fluttermaritime/materialdesign.dart';
 
 class Practicelisten extends StatefulWidget {
   const Practicelisten({super.key});
@@ -21,6 +22,7 @@ class _PracticelistenState extends State<Practicelisten> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
       appBar: AppBar(
         title: const Text('PRACTICE LISTENING'),
         titleTextStyle:
@@ -124,8 +126,7 @@ class _PracticelistenState extends State<Practicelisten> {
                         Expanded(
                           child: Text(
                             _list[currentIndex]['name'],
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                            style: textstyle_h1_black,
                           ),
                         )
                       ],
@@ -147,7 +148,7 @@ class _PracticelistenState extends State<Practicelisten> {
                     ),
                     Text(
                       _list[currentIndex]['mean'],
-                      style: const TextStyle(fontSize: 16),
+                      style: body_text,
                     ),
                     const SizedBox(
                       height: 20,

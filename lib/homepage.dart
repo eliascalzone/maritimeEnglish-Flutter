@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/glossarypage.dart';
+import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:fluttermaritime/settingspage.dart';
 
@@ -8,16 +9,16 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final image = Image.asset('images/homeimage.png');
     return Scaffold(
-      body: Center(
+      //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
         child: Column(children: [
-          Expanded(flex: 0, child: Image.asset('images/homeimage.png')),
-          const Padding(
-              padding: EdgeInsets.only(
-            top: 20,
-          )),
-          const Expanded(
-              flex: 0,
+          image,
+          box_height20,
+          const Align(
+              alignment: Alignment.centerLeft,
               child: Text(
                 'What should we learn today?',
                 style: TextStyle(
@@ -25,32 +26,87 @@ class Homepage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               )),
-          const Padding(
-              padding: EdgeInsets.only(
-            top: 20,
-          )),
-          Expanded(
-            flex: 0,
-            child: GestureDetector(
+          box_height8,
+          GestureDetector(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const Glossarypage()));
               },
-              child: Image.asset('images/glossarySMCP.png'),
-            ),
-          ),
-          Expanded(
-              flex: 0,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Radiocompage()));
-                },
-                child: Image.asset('images/radiocom.png'),
+              child: Container(
+                padding: const EdgeInsets.only(right: 30, left: 30),
+                width: MediaQuery.of(context).size.width * 0.86,
+                height: MediaQuery.of(context).size.height * 0.085,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      )
+                    ]),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.auto_stories_rounded,
+                        color: Theme.of(context).primaryColor,
+                        size: 40,
+                      ),
+                      box_width8,
+                      const Text(
+                        'Standard Communication',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      const Spacer(),
+                      icon_next
+                    ]),
+              )),
+          box_height8,
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Radiocompage()));
+              },
+              child: Container(
+                padding: const EdgeInsets.only(right: 30, left: 30),
+                width: MediaQuery.of(context).size.width * 0.86,
+                height: MediaQuery.of(context).size.height * 0.085,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      )
+                    ]),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Icon(
+                        Icons.cell_tower_rounded,
+                        color: Color.fromRGBO(251, 127, 46, 1),
+                        size: 40,
+                      ),
+                      box_width8,
+                      Text(
+                        'Radio Communication',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Spacer(),
+                      icon_next
+                    ]),
               ))
         ]),
       ),
