@@ -72,8 +72,33 @@ class _Shippage1State extends State<Shippage1> {
       audioCache.play('incorrect.mp3');
     }
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
+      context: context,
+      builder: (BuildContext context) {
+        if (message2 == 'Amazing!!') {
+          Future.delayed(const Duration(seconds: 2), () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Celebrate()),
+            );
+          });
+          return AlertDialog(
+              alignment: Alignment.bottomCenter,
+              actionsAlignment: MainAxisAlignment.center,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              content: SizedBox(
+                width: MediaQuery.of(context).size.width * 1.0,
+                height: 100,
+                child: Text(message2),
+              )
+
+              /* alignment: Alignment.bottomCenter,
+              actionsAlignment: MainAxisAlignment.center,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              content: Text(message2)*/
+              );
+        } else {
           return AlertDialog(
             alignment: Alignment.bottomCenter,
             actionsAlignment: MainAxisAlignment.center,
@@ -83,15 +108,7 @@ class _Shippage1State extends State<Shippage1> {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
-                  if (message2 == 'Amazing!!') {
-                    Future.delayed(const Duration(seconds: 1), () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Celebrate()),
-                      );
-                    });
-                  } else {
+                  {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -109,7 +126,9 @@ class _Shippage1State extends State<Shippage1> {
               ),
             ],
           );
-        });
+        }
+      },
+    );
   }
 
   @override
