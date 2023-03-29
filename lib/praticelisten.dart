@@ -1,7 +1,9 @@
-import 'dart:math';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
 import 'package:fluttermaritime/materialdesign.dart';
+import 'package:record/record.dart';
 
 class Practicelisten extends StatefulWidget {
   const Practicelisten({super.key});
@@ -11,6 +13,10 @@ class Practicelisten extends StatefulWidget {
 }
 
 class _PracticelistenState extends State<Practicelisten> {
+  final record = Record();
+  String recPath = '';
+  bool isRecording = false;
+
   final List<Map<String, dynamic>> _list = List.from(allwords);
   int currentIndex = 0;
   static const textstyle_alphabet = TextStyle(
@@ -18,6 +24,14 @@ class _PracticelistenState extends State<Practicelisten> {
     fontSize: 18,
     fontWeight: FontWeight.bold,
   );
+
+  List<String> getLetter(){
+    return ['A','B','C','D','E'];
+  }
+
+  List<int> getIndex(){
+    return [0,5,13,28,42];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,51 +52,51 @@ class _PracticelistenState extends State<Practicelisten> {
             TextButton(
                 onPressed: () {
                   setState(() {
-                    currentIndex = 0;
+                    currentIndex = getIndex().elementAt(0);
                   });
                 },
-                child: const Text(
-                  "A",
+                child: Text(
+                  getLetter().elementAt(0),
                   style: textstyle_alphabet,
                 )),
             TextButton(
                 onPressed: () {
                   setState(() {
-                    currentIndex = 10;
+                    currentIndex = getIndex().elementAt(1);
                   });
                 },
-                child: const Text(
-                  "B",
+                child: Text(
+                  getLetter().elementAt(1),
                   style: textstyle_alphabet,
                 )),
             TextButton(
                 onPressed: () {
                   setState(() {
-                    currentIndex = 20;
+                    currentIndex = getIndex().elementAt(2);
                   });
                 },
-                child: const Text(
-                  "C",
+                child: Text(
+                  getLetter().elementAt(2),
                   style: textstyle_alphabet,
                 )),
             TextButton(
                 onPressed: () {
                   setState(() {
-                    currentIndex = 30;
+                    currentIndex = getIndex().elementAt(3);
                   });
                 },
-                child: const Text(
-                  "D",
+                child: Text(
+                  getLetter().elementAt(3),
                   style: textstyle_alphabet,
                 )),
             TextButton(
                 onPressed: () {
                   setState(() {
-                    currentIndex = 40;
+                    currentIndex = getIndex().elementAt(4);
                   });
                 },
-                child: const Text(
-                  "E",
+                child: Text(
+                  getLetter().elementAt(4),
                   style: textstyle_alphabet,
                 )),
           ],
@@ -156,19 +170,30 @@ class _PracticelistenState extends State<Practicelisten> {
                   ],
                 ),
               ),
+
+              /* Playback button */
               Container(
                   alignment: Alignment.bottomRight,
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Image.asset('images/hearing.png'),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Play recording
+                    },
+                    style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                        ),
+                    child: const Icon(Icons.play_arrow)
                   )),
+    
               Expanded(
                   flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: () {
+
+                      /* Previous Button */
+                      OutlinedButton(
+                        onPressed: () {
                           setState(() {
                             if (currentIndex == 0) {
                               currentIndex = _list.length - 1;
@@ -177,14 +202,43 @@ class _PracticelistenState extends State<Practicelisten> {
                             }
                           });
                         },
-                        child: Image.asset('images/backbutton.png'),
+                        style: OutlinedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                        ),
+                        child: const Icon(Icons.arrow_back_ios_rounded),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset('images/micro.png'),
+
+                      /* Record Button */
+                      ElevatedButton(
+                        onPressed: () async {
+                          /*if(await record.isRecording()){
+                            record.stop();
+                          }
+                          else {
+                            if (await record.hasPermission()) {
+                              await record.start(
+                                //path: 'aFullPath/myFile.m4a',
+                                encoder: AudioEncoder.aacLc,
+                                bitRate: 128000,
+                                samplingRate: 44100,
+                              );
+                            }
+                          }*/
+                          isRecording = await record.isRecording();
+                          setState(() {});
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                        ),
+                        child: Icon(
+                          isRecording ? Icons.stop : Icons.mic, size: 60,)
                       ),
-                      GestureDetector(
-                        onTap: () {
+
+                      /* Next Button */
+                      OutlinedButton(
+                        onPressed: () {
                           setState(() {
                             currentIndex++;
                             if (currentIndex >= _list.length) {
@@ -192,7 +246,11 @@ class _PracticelistenState extends State<Practicelisten> {
                             }
                           });
                         },
-                        child: Image.asset('images/nextbutton.png'),
+                        style: OutlinedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(10),
+                        ),
+                        child: const Icon(Icons.arrow_forward_ios_rounded),
                       ),
                     ],
                   ))
