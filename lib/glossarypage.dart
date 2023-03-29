@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/phrasesmcp.dart';
 import 'package:fluttermaritime/praticelisten.dart';
-import 'package:fluttermaritime/settingspage.dart';
 
 class Glossarypage extends StatelessWidget {
   const Glossarypage({super.key});
@@ -96,7 +95,7 @@ class Glossarypage extends StatelessWidget {
                           child: ListTile(
                             contentPadding: EdgeInsets.only(left: 1),
                             title: Text(
-                              'Praticing Listening',
+                              'Practice Listening',
                               style: textstyle_h2_blue,
                             ),
                             subtitle: Text(
