@@ -84,7 +84,7 @@ class Radiocompage extends StatelessWidget {
                       // color: Color.fromRGBO(235, 239, 245, 1.0),
                       padding: const EdgeInsets.only(right: 30, left: 30),
                       width: MediaQuery.of(context).size.width * 0.86,
-                      height: MediaQuery.of(context).size.height * 0.26,
+                      height: MediaQuery.of(context).size.height * 0.28,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,

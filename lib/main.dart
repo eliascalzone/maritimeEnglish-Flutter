@@ -75,6 +75,7 @@ class _RootPageState extends State<RootPage> {
         title: const Text(
           'MARITIME ENGLISH',
         ),
+        centerTitle: true,
         titleTextStyle:
             const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
