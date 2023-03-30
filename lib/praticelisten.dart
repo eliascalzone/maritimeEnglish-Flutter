@@ -25,12 +25,36 @@ class _PracticelistenState extends State<Practicelisten> {
     fontWeight: FontWeight.bold,
   );
 
-  List<String> getLetter(){
-    return ['A','B','C','D','E'];
+  static const indexArr = [0,5,13,28,42,48,56,60,65,70,71,79,85,86,94,98,107,131,139,143,148];
+  static const letterArr = ['A','B','C','D','E','F','G','H','I','J','L','M','N','O','P','R','S','T','U','V','W'];
+
+  Color letterColor(int index){
+    if(currentIndex<=indexArr[index] && currentIndex>=148){
+      return const Color.fromARGB(30, 33, 149, 243);
+    }
+    else if(currentIndex>=indexArr[index] && currentIndex<indexArr[index+1]){
+      return const Color.fromARGB(30, 33, 149, 243);
+    }
+    else {return const Color.fromARGB(0, 33, 149, 243);}
   }
 
-  List<int> getIndex(){
-    return [0,5,13,28,42];
+  List<Widget> upperButtons(){
+    List<Widget> list = [];
+    for(int i=0;i<21;i++){
+      list.add(TextButton(
+        onPressed: () {
+          setState(() {
+            currentIndex = indexArr[i];
+          });
+        },
+        style: TextButton.styleFrom(backgroundColor: letterColor(i)),
+        child: Text(
+          letterArr[i],
+          style: textstyle_alphabet,
+        ),
+      ));
+    }
+    return list;
   }
 
   @override
@@ -43,66 +67,14 @@ class _PracticelistenState extends State<Practicelisten> {
             const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       body: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    currentIndex = getIndex().elementAt(0);
-                  });
-                },
-                child: Text(
-                  getLetter().elementAt(0),
-                  style: textstyle_alphabet,
-                )),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    currentIndex = getIndex().elementAt(1);
-                  });
-                },
-                child: Text(
-                  getLetter().elementAt(1),
-                  style: textstyle_alphabet,
-                )),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    currentIndex = getIndex().elementAt(2);
-                  });
-                },
-                child: Text(
-                  getLetter().elementAt(2),
-                  style: textstyle_alphabet,
-                )),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    currentIndex = getIndex().elementAt(3);
-                  });
-                },
-                child: Text(
-                  getLetter().elementAt(3),
-                  style: textstyle_alphabet,
-                )),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    currentIndex = getIndex().elementAt(4);
-                  });
-                },
-                child: Text(
-                  getLetter().elementAt(4),
-                  style: textstyle_alphabet,
-                )),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
+            Container(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              height: 50,
+              child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: 
+                upperButtons()
+          ),
         ),
         Container(
           padding: const EdgeInsets.only(right: 30, left: 30),
