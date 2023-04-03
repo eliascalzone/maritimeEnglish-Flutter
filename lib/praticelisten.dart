@@ -1,9 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
 import 'package:fluttermaritime/materialdesign.dart';
-import 'package:record/record.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:io';
 
 class Practicelisten extends StatefulWidget {
   const Practicelisten({super.key});
@@ -13,9 +13,48 @@ class Practicelisten extends StatefulWidget {
 }
 
 class _PracticelistenState extends State<Practicelisten> {
-  final record = Record();
-  String recPath = '';
-  bool isRecording = false;
+  final recorder = FlutterSoundRecorder();
+  bool isRecorderReady = false;
+
+  Future record() async{
+    if(!isRecorderReady){return;}
+
+    await recorder.startRecorder(toFile: 'audio');
+  }
+
+  Future stop() async{
+    if(!isRecorderReady){return;}
+
+    final path = await recorder.stopRecorder();
+    final audiofile = File(path!);
+
+    print('Recorded audio: $audiofile');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    initRecorder();
+  }
+
+  @override
+  void dispose() {
+    recorder.closeRecorder();
+
+    super.dispose();
+  }
+
+  Future initRecorder() async{
+    final status = await Permission.microphone.request();
+
+    if(status != PermissionStatus.granted){
+      throw 'Microphone permission not granted';
+    }
+
+    await recorder.openRecorder();
+    isRecorderReady = true;
+  }
 
   final List<Map<String, dynamic>> _list = List.from(allwords);
   int currentIndex = 0;
@@ -184,20 +223,12 @@ class _PracticelistenState extends State<Practicelisten> {
                       /* Record Button */
                       ElevatedButton(
                         onPressed: () async {
-                          /*if(await record.isRecording()){
-                            record.stop();
+                          if(recorder.isRecording){
+                            await stop();
                           }
                           else {
-                            if (await record.hasPermission()) {
-                              await record.start(
-                                //path: 'aFullPath/myFile.m4a',
-                                encoder: AudioEncoder.aacLc,
-                                bitRate: 128000,
-                                samplingRate: 44100,
-                              );
-                            }
-                          }*/
-                          isRecording = await record.isRecording();
+                            await record();
+                          }
                           setState(() {});
                         },
                         style: ElevatedButton.styleFrom(
@@ -205,7 +236,7 @@ class _PracticelistenState extends State<Practicelisten> {
                           padding: EdgeInsets.all(10),
                         ),
                         child: Icon(
-                          isRecording ? Icons.stop : Icons.mic, size: 60,)
+                          recorder.isRecording ? Icons.stop : Icons.mic, size: 60,)
                       ),
 
                       /* Next Button */

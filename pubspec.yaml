@@ -36,7 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.0.0
   audioplayers: ^0.19.1
-  record: ^4.4.4
+  flutter_sound: ^9.2.13
+  permission_handler: ^10.2.0
   
 
   
