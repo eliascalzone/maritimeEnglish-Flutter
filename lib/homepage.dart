@@ -3,6 +3,7 @@ import 'package:fluttermaritime/glossarypage.dart';
 import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:fluttermaritime/settingspage.dart';
+import 'package:lottie/lottie.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -10,12 +11,21 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final image = Image.asset('images/homeimage.png');
+    var animate = Lottie.network(
+        'https://assets5.lottiefiles.com/packages/lf20_gfngwjbu.json');
+    var welcomeText = const Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          'Welcome!',
+          style: textstyle_h2_black,
+        ));
     return Scaffold(
       //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
         child: Column(children: [
-          image,
+          welcomeText,
+          animate,
           box_height20,
           const Align(
               alignment: Alignment.centerLeft,

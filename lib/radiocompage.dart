@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaritime/sentencesradio.dart';
 import 'package:fluttermaritime/settingspage.dart';
 import 'package:fluttermaritime/shippage.dart';
 import 'package:fluttermaritime/materialdesign.dart';
@@ -8,8 +9,9 @@ class Radiocompage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var images1 = Image.asset('images/radio_general_phrases.png');
-    var images2 = Image.asset('images/radio_theship.png');
+    var images1 = Image.asset('images/radio_generalphrases.png');
+    var images3 = Image.asset('images/radio_theship.png');
+
     return Scaffold(
         //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         appBar: AppBar(
@@ -32,15 +34,15 @@ class Radiocompage extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () {
-                      /*  Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Phrasesmcp()));*/
+                              builder: (context) => const Radiosentences()));
                     },
                     child: Container(
                       padding: const EdgeInsets.only(right: 30, left: 30),
                       width: MediaQuery.of(context).size.width * 0.86,
-                      height: MediaQuery.of(context).size.height * 0.26,
+                      height: MediaQuery.of(context).size.height * 0.28,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.white,
@@ -71,6 +73,7 @@ class Radiocompage extends StatelessWidget {
                       ]),
                     )),
                 box_height20,
+                box_height20,
                 GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -97,7 +100,7 @@ class Radiocompage extends StatelessWidget {
                             )
                           ]),
                       child: Column(children: [
-                        images2,
+                        images3,
                         const Align(
                           alignment: Alignment.centerLeft,
                           child: ListTile(
@@ -113,7 +116,7 @@ class Radiocompage extends StatelessWidget {
                           ),
                         )
                       ]),
-                    ))
+                    )),
               ],
             )
           ],

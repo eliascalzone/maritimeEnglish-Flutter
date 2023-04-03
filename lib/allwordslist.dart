@@ -1,3 +1,4 @@
+//Word list of MSCP
 const List<Map<String, dynamic>> allwords = [
   {
     'name': 'Abandon vessel',
@@ -608,4 +609,139 @@ const List<Map<String, dynamic>> allwords = [
     'name': 'Wreck',
     'mean': 'A vessel which has been destroyed, sunk or abandoned at sea'
   }
+];
+
+//Word list of Radio communication - COMMON WORDS 1, 2, 3
+const List<Map<String, dynamic>> common_words = [
+  //This is common words 1
+  {'swe': 'lots', 'eng': 'test1'},
+  {'swe': 'bogserbåt ', 'eng': 'test2'},
+  {'swe': 'förbiudet'},
+  {'swe': 'dragga'},
+  {'swe': 'släpa'},
+  {'swe': 'fångat, oklart (ankare)'},
+  {'swe': 'farled'},
+  {'swe': 'ankarplats '},
+  {'swe': 'anlöpningshamn'},
+  {'swe': 'mottagningspunkt '},
+  {'swe': 'riktning'},
+  {'swe': 'angöra/angöring, närma sig '},
+  {'swe': 'förtöjningsorder'},
+  {'swe': 'förtöjningsplats'},
+  {'swe': 'förtöja'},
+  {'swe': 'gå in'},
+  {'swe': 'fortsätta'},
+  {'swe': 'svänga'},
+  {'swe': 'avgå'},
+];
+
+//Word list for Radico communication all sentences
+const List<Map<String, dynamic>> all_sentences = [
+  //Topic Arrival
+  {'topic': 'arrival', 'data': 'What are my berthing instructions? '},
+  {'topic': 'arrival', 'data': 'Do I have permission to enter?'},
+  {'topic': 'arrival', 'data': 'Do I have permission to proceed?'},
+  {'topic': 'arrival', 'data': 'Is there any other traffic?'},
+  {'topic': 'arrival', 'data': 'I am making way through the water'},
+  {'topic': 'arrival', 'data': 'I do not have steerage way'},
+  {'topic': 'arrival', 'data': 'From what direction are you approaching?'},
+  {'topic': 'arrival', 'data': 'My ETD is 1500 hours'},
+  //Topic Anchoring
+  {'topic': 'anchoring', 'data': 'I am heaving up anchor'},
+  {'topic': 'anchoring', 'data': 'My anchor is clear of the bottom'},
+  {'topic': 'anchoring', 'data': 'My anchor is fouled'},
+  {'topic': 'anchoring', 'data': 'I have slipped / lost my anchor'},
+  {'topic': 'anchoring', 'data': 'Anchoring is prohibited'},
+  {'topic': 'anchoring', 'data': 'Do not dredge anchor'},
+  {'topic': 'anchoring', 'data': 'Are you dragging anchor?'},
+  {'topic': 'anchoring', 'data': 'What is the anchor position for me?'},
+  {'topic': 'anchoring', 'data': 'You have anchored in the wrong position'},
+  {'topic': 'anchoring', 'data': 'You must heave up your anchor'},
+  {
+    'topic': 'anchoring',
+    'data': 'Vessel "Pole Star” is at anchor in position 55°32´N-011°14´E'
+  },
+  //Topic Manoeuvring
+  {'topic': 'manoeuvring', 'data': 'I am going astern'},
+  {'topic': 'manoeuvring', 'data': 'I wish to overtake'},
+  {
+    'topic': 'manoeuvring',
+    'data': 'I am a hampered vessel because of deep draught'
+  },
+  {'topic': 'manoeuvring', 'data': 'I am altering my course to 150'},
+  {'topic': 'manoeuvring', 'data': 'I am not making way through the water'},
+  {'topic': 'manoeuvring', 'data': 'Keep well clear of me'},
+  {'topic': 'manoeuvring', 'data': 'I am proceeding at reduced speed'},
+  {'topic': 'manoeuvring', 'data': 'You are in the leading line'},
+  //Topic Position, Speed
+  {'topic': 'position/speed', 'data': 'What is your position?'},
+  {
+    'topic': 'position/speed',
+    'data': 'Say again your position for identification'
+  },
+  {'topic': 'position/speed', 'data': 'My position is 39°42´N, 024°15´ W'},
+  {
+    'topic': 'position/speed',
+    'data': 'What is the course to reach you? What is your present speed?'
+  },
+  {
+    'topic': 'position/speed',
+    'data': 'You are proceeding at a dangerous speed'
+  },
+  {'topic': 'position/speed', 'data': 'I am reducing speed'},
+  {'topic': 'position/speed', 'data': 'I can not increase speed'},
+  {'topic': 'position/speed', 'data': 'What speed do you advise?'},
+  //Topic Pilotage
+  {'topic': 'pilotage', 'data': 'I require a pilot'},
+  {'topic': 'pilotage', 'data': 'Is the pilot boat on station?'},
+  {'topic': 'pilotage', 'data': 'At what position can I take pilot?'},
+  {'topic': 'pilotage', 'data': 'Is pilotage compulsory?'},
+  {'topic': 'pilotage', 'data': 'You must rig pilot ladder on port side'},
+  {
+    'topic': 'pilotage',
+    'data': 'You must rig gangway combined with pilot ladder'
+  },
+  {'topic': 'pilotage', 'data': 'Put light on at pilot ladder position'},
+  {'topic': 'pilotage', 'data': 'Pilotage suspended for all vessels'},
+  {'topic': 'pilotage', 'data': 'Pilotage resumed for all vessels'},
+  {'topic': 'pilotage', 'data': 'Give slight heel to starboard'},
+  //Topic Radar
+  {'topic': 'radar', 'data': 'My radar is operational'},
+  {'topic': 'radar', 'data': 'My radar is inoperative'},
+  {'topic': 'radar', 'data': 'I do not have radar'},
+  {'topic': 'radar', 'data': 'You must alter course for identification'},
+  {'topic': 'radar', 'data': 'I require shore-based radar assistance'},
+  {'topic': 'radar', 'data': 'You are leaving my screen'},
+  {'topic': 'radar', 'data': 'Vessel ahead of you is on the same course'},
+  {'topic': 'radar', 'data': 'You are approaching starbord limit of fairway'},
+  //Topic Routering
+  {'topic': 'routering', 'data': 'Do I have permission to enter traffic lane?'},
+  {
+    'topic': 'routering',
+    'data': 'You do not have permission to enter traffic lane'
+  },
+  {
+    'topic': 'routering',
+    'data': 'You are not complying with traffic regulations'
+  },
+  {
+    'topic': 'routering',
+    'data': 'You are not keeping your correct traffic lane'
+  },
+  {
+    'topic': 'routering',
+    'data': 'There is a vessel obstructing your movements'
+  },
+  {
+    'topic': 'routering',
+    'data': 'There is a hampered vessel in position 59°39´ N, 010°22´ E'
+  },
+  //Topic Fishing
+  {'topic': 'fishing', 'data': 'Navigate with caution'},
+  {'topic': 'fishing', 'data': 'Fishing is prohibited in this area'},
+  {'topic': 'fishing', 'data': 'Is there fishing gear ahead of me?'},
+  {'topic': 'fishing', 'data': 'You are heading towards fishing gear'},
+  {'topic': 'fishing', 'data': 'There are nets with buoys in this area'},
+  {'topic': 'fishing', 'data': 'Fishing gear has fouled my propeller'},
+  {'topic': 'fishing', 'data': 'Advise you recover your fishing gear'},
 ];
