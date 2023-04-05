@@ -38,6 +38,7 @@ dependencies:
   audioplayers: ^0.19.1
   flutter_sound: ^9.2.13
   permission_handler: ^10.2.0
+  flutter_screenutil: ^5.7.0
   
 
   

@@ -1,8 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/radiocompage.dart';
 import 'package:fluttermaritime/shippage1.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Shippage extends StatefulWidget {
   const Shippage({Key? key, required this.onSubmit}) : super(key: key);
@@ -70,7 +70,7 @@ class _ShippageState extends State<Shippage> {
             alignment: Alignment.bottomCenter,
             actionsAlignment: MainAxisAlignment.center,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
+                borderRadius: BorderRadius.circular(20.r)),
             //title: const Text('Result'),
             content: Text(message),
             actions: <Widget>[
@@ -84,7 +84,7 @@ class _ShippageState extends State<Shippage> {
                 child: Text(
                   message == 'Amazing!!' ? 'CONTINUE' : 'GOT IT',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: message == 'Amazing!!'
                           ? Color.fromRGBO(76, 146, 219, 1.0)
@@ -103,28 +103,30 @@ class _ShippageState extends State<Shippage> {
         appBar: AppBar(
           title: const Text('THE SHIP'),
           titleTextStyle:
-              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+          centerTitle: true,
           automaticallyImplyLeading: false,
           leading: IconButton(
             onPressed: () => showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      title: const Text(
+                          borderRadius: BorderRadius.circular(20.r)),
+                      title: Text(
                         'Are you sure you want to quit?',
-                        style: TextStyle(
-                            color: Color.fromRGBO(76, 146, 219, 1.0),
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
-                      content: const Text(
-                          'All progress in this section will be lost'),
+                      content: Text(
+                        'All progress in this section will be lost',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                       actions: <Widget>[
                         TextButton(
                             onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: const Text(
+                            child: Text(
                               'CANCEL',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.sp),
                             )),
                         TextButton(
                             onPressed: () {
@@ -133,153 +135,160 @@ class _ShippageState extends State<Shippage> {
                                   MaterialPageRoute(
                                       builder: (context) => Radiocompage()),
                                   (route) => route.isFirst);
-
-                              /*Navigator.pop(context);
-                              Navigator.pop(context);*/
                             },
-                            child: const Text(
+                            child: Text(
                               'YES',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.sp),
                             ))
                       ],
                     )),
-            icon: const Icon(Icons.close),
+            icon: Icon(
+              Icons.close,
+            ),
           ),
         ),
         body: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-              const ListTile(
-                  contentPadding: EdgeInsets.only(left: 30),
+              ListTile(
+                  contentPadding: EdgeInsets.only(left: 30.sp),
                   title: Text(
                     'Type the matching word',
-                    style: textstyle_h2_black,
+                    style: Theme.of(context).textTheme.headline2,
                   )),
-              Image.asset('images/shipexe.png'),
-              box_height20,
+              Image.asset(
+                'images/shipexe.png',
+                width: 370.w,
+                height: 277.h,
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
               Column(children: [
                 SizedBox(
-                    width: 300,
+                    width: 300.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(
+                        Center(
                             child: Text(
                           'Deck',
-                          style: body_text,
+                          style: Theme.of(context).textTheme.bodyText1,
                         )),
                         SizedBox(
-                          width: 150,
+                          width: 150.w,
                           child: TextField(
                             controller: controller1,
                             decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(4.0),
+                                contentPadding: EdgeInsets.all(4.sp),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20.r),
                                 )),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ],
                     )),
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 8.h,
                 ),
                 SizedBox(
-                    width: 300,
+                    width: 300.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(
+                        Center(
                             child: Text(
                           'Propeller',
-                          style: body_text,
+                          style: Theme.of(context).textTheme.bodyText1,
                         )),
                         SizedBox(
-                          width: 150,
+                          width: 150.w,
                           child: TextField(
                             controller: controller2,
                             decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(4.0),
+                                contentPadding: EdgeInsets.all(4.sp),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20.r),
                                 )),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ],
                     )),
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 8.h,
                 ),
                 SizedBox(
-                    width: 300,
+                    width: 300.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(
+                        Center(
                             child: Text(
                           'Funnel',
-                          style: body_text,
+                          style: Theme.of(context).textTheme.bodyText1,
                         )),
                         SizedBox(
-                          width: 150,
+                          width: 150.w,
                           child: TextField(
                             controller: controller3,
                             decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(4.0),
+                                contentPadding: EdgeInsets.all(4.sp),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20.r),
                                 )),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ],
                     )),
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 8.h,
                 ),
                 SizedBox(
-                    width: 300,
+                    width: 300.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Center(
+                        Center(
                             child: Text(
                           'Stern',
-                          style: body_text,
+                          style: Theme.of(context).textTheme.bodyText1,
                         )),
                         SizedBox(
-                          width: 150,
+                          width: 150.w,
                           child: TextField(
                             controller: controller4,
                             decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(4.0),
+                                contentPadding: EdgeInsets.all(4.sp),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20))),
+                                    borderRadius: BorderRadius.circular(20.r))),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ],
                     ))
               ]),
-              box_height20,
+              SizedBox(
+                height: 20.h,
+              ),
               ElevatedButton(
                 onPressed: () {
                   _submit();
                 },
                 style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all<Size>(Size(
-                      MediaQuery.of(context).size.width * 0.6,
-                      MediaQuery.of(context).size.height * 0.05,
-                    )),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(Size(280.w, 50.h)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)))),
-                child: const Text(
+                            borderRadius: BorderRadius.circular(20.r)))),
+                child: Text(
                   'CHECK',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                 ),
               ),
             ])));

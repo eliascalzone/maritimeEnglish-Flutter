@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/celebrate.dart';
 import 'package:fluttermaritime/radiocompage.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:fluttermaritime/materialdesign.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Shippage1 extends StatefulWidget {
   const Shippage1({super.key});
@@ -14,15 +13,7 @@ class Shippage1 extends StatefulWidget {
 
 class _Shippage1State extends State<Shippage1> {
   AudioCache audioCache = AudioCache();
-  //Body variable
-  final titleText = const Text(
-    'Type the matching word',
-    style: textstyle_h2_black,
-  );
-  var image = Image.asset('images/shipnextexe.png');
-  var box = const SizedBox(
-    height: 8,
-  );
+
   //Method variable
   String _name12 = 'a';
   String _name22 = 'c';
@@ -85,10 +76,10 @@ class _Shippage1State extends State<Shippage1> {
               alignment: Alignment.bottomCenter,
               actionsAlignment: MainAxisAlignment.center,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.r)),
               content: SizedBox(
                 width: MediaQuery.of(context).size.width * 1.0,
-                height: 100,
+                height: 100.h,
                 child: Text(message2),
               )
 
@@ -103,7 +94,7 @@ class _Shippage1State extends State<Shippage1> {
             alignment: Alignment.bottomCenter,
             actionsAlignment: MainAxisAlignment.center,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
+                borderRadius: BorderRadius.circular(20.r)),
             content: Text(message2),
             actions: <Widget>[
               TextButton(
@@ -116,10 +107,10 @@ class _Shippage1State extends State<Shippage1> {
                         ));
                   }
                 },
-                child: const Text(
+                child: Text(
                   'GOT IT',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(251, 127, 46, 1.0)),
                 ),
@@ -140,26 +131,28 @@ class _Shippage1State extends State<Shippage1> {
           title: const Text('THE SHIP'),
           titleTextStyle:
               const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          centerTitle: true,
           leading: IconButton(
             onPressed: () => showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      title: const Text(
+                          borderRadius: BorderRadius.circular(20.r)),
+                      title: Text(
                         'Are you sure you want to quit?',
-                        style: TextStyle(
-                            color: Color.fromRGBO(76, 146, 219, 1.0),
-                            fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
-                      content: const Text(
-                          'All progress in this section will be lost'),
+                      content: Text(
+                        'All progress in this section will be lost',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                       actions: <Widget>[
                         TextButton(
                             onPressed: () => Navigator.pop(context, 'Cancel'),
-                            child: const Text(
+                            child: Text(
                               'CANCEL',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.sp),
                             )),
                         TextButton(
                             onPressed: () {
@@ -168,19 +161,15 @@ class _Shippage1State extends State<Shippage1> {
                                   MaterialPageRoute(
                                       builder: (context) => Radiocompage()),
                                   (route) => route.isFirst);
-
-                              /*Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              Navigator.pop(context);*/
                             },
-                            child: const Text(
+                            child: Text(
                               'YES',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16.sp),
                             ))
                       ],
                     )),
-            icon: const Icon(Icons.close),
+            icon: Icon(Icons.close),
           ),
         ),
         body: Center(
@@ -188,100 +177,119 @@ class _Shippage1State extends State<Shippage1> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ListTile(
-                    contentPadding: EdgeInsets.only(left: 30),
-                    title: titleText),
-                image,
-                box_height20,
+                    contentPadding: EdgeInsets.only(left: 30.sp),
+                    title: Text(
+                      'Type the matching word',
+                      style: Theme.of(context).textTheme.headline2,
+                    )),
+                Image.asset(
+                  'images/shipnextexe.png',
+                  width: 370.w,
+                  height: 277.h,
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
                 Column(children: [
                   SizedBox(
-                      width: 300,
+                      width: 300.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(
+                          Center(
                               child: Text(
                             'Superstructure',
-                            style: body_text,
+                            style: Theme.of(context).textTheme.bodyText1,
                           )),
                           SizedBox(
-                            width: 150,
+                            width: 150.w,
                             child: TextFormField(
                               controller: controller12,
                               decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(4.0),
+                                  contentPadding: EdgeInsets.all(4.sp),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   )),
                               textAlign: TextAlign.center,
                             ),
                           ),
                         ],
                       )),
-                  box,
                   SizedBox(
-                      width: 300,
+                    height: 8.h,
+                  ),
+                  SizedBox(
+                      width: 300.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(child: Text('Anchor', style: body_text)),
+                          Center(
+                              child: Text(
+                            'Anchor',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          )),
                           SizedBox(
-                            width: 150,
+                            width: 150.w,
                             child: TextFormField(
                               controller: controller22,
                               decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(4.0),
+                                  contentPadding: EdgeInsets.all(4.sp),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   )),
                               textAlign: TextAlign.center,
                             ),
                           ),
                         ],
                       )),
-                  box,
                   SizedBox(
-                      width: 300,
+                    height: 8.h,
+                  ),
+                  SizedBox(
+                      width: 300.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(
+                          Center(
                               child: Text(
                             'Bow',
-                            style: body_text,
+                            style: Theme.of(context).textTheme.bodyText1,
                           )),
                           SizedBox(
-                            width: 150,
+                            width: 150.w,
                             child: TextFormField(
                               controller: controller32,
                               decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(4.0),
+                                  contentPadding: EdgeInsets.all(4.sp),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   )),
                               textAlign: TextAlign.center,
                             ),
                           ),
                         ],
                       )),
-                  box,
                   SizedBox(
-                      width: 300,
+                    height: 8.h,
+                  ),
+                  SizedBox(
+                      width: 300.w,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Center(
+                          Center(
                               child: Text(
                             'Portside',
-                            style: body_text,
+                            style: Theme.of(context).textTheme.bodyText1,
                           )),
                           SizedBox(
-                            width: 150,
+                            width: 150.w,
                             child: TextFormField(
                               controller: controller42,
                               decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(4.0),
+                                  contentPadding: EdgeInsets.all(4.sp),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   )),
                               textAlign: TextAlign.center,
                             ),
@@ -294,16 +302,15 @@ class _Shippage1State extends State<Shippage1> {
                     _submit2();
                   },
                   style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all<Size>(Size(
-                        MediaQuery.of(context).size.width * 0.6,
-                        MediaQuery.of(context).size.height * 0.05,
-                      )),
+                      fixedSize:
+                          MaterialStateProperty.all<Size>(Size(280.w, 50.h)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)))),
-                  child: const Text(
+                              borderRadius: BorderRadius.circular(20.r)))),
+                  child: Text(
                     'CHECK',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
                   ),
                 )
               ]),
