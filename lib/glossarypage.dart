@@ -1,114 +1,130 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/materialdesign.dart';
 import 'package:fluttermaritime/phrasesmcp.dart';
 import 'package:fluttermaritime/praticelisten.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Glossarypage extends StatelessWidget {
   const Glossarypage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var images1 = Image.asset('images/general_phrases.png');
-    var images2 = Image.asset('images/practicing_listen.png');
+    var images1 = Image.asset(
+      'images/general_phrases.png',
+      width: 370.w,
+      height: 160.h,
+    );
+    var images2 = Image.asset('images/practicing_listen.png',
+        width: 370.w, height: 160.h);
     return Scaffold(
         //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         appBar: AppBar(
           title: const Text('STANDARD COMMUNICATION'),
-          titleTextStyle:
-              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          centerTitle: true,
+          titleTextStyle: Theme.of(context).textTheme.headline3,
         ),
-        body: ListView(
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            Column(
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Phrasesmcp()));
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.only(right: 30, left: 30),
-                      width: MediaQuery.of(context).size.width * 0.86,
-                      height: MediaQuery.of(context).size.height * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),
-                      child: Column(children: [
-                        images1,
-                        const Align(
+        body: SafeArea(
+            child: Padding(
+          padding: EdgeInsets.only(left: 30.sp, right: 30.sp, top: 20.sp),
+          child: Column(
+            children: [
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Phrasesmcp()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.r)),
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    elevation: 1,
+
+                    /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
+                    width: 370.w,
+                    height: 274.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.r),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          )
+                        ]),*/
+                    child: Column(children: [
+                      images1,
+                      Align(
                           alignment: Alignment.centerLeft,
                           child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 1),
+                            contentPadding: EdgeInsets.only(left: 10.w),
                             title: Text(
                               'General Phrases',
-                              style: textstyle_h2_blue,
+                              style: Theme.of(context).textTheme.headline4,
                             ),
-                            subtitle: Text(
-                              'Here is where you can find definitions for Standard Maritime Communication Phrases',
-                              style: body_text,
+                            subtitle: Expanded(
+                              child: Text(
+                                'Here is where you can find definitions for Standard Maritime Communication Phrases',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                             ),
-                          ),
-                        )
-                      ]),
-                    )),
-                box_height20,
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Practicelisten()));
-                    },
-                    child: Container(
-                      // color: Color.fromRGBO(235, 239, 245, 1.0),
-                      padding: const EdgeInsets.only(right: 30, left: 30),
-                      width: MediaQuery.of(context).size.width * 0.86,
-                      height: MediaQuery.of(context).size.height * 0.28,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),
-                      child: Column(children: [
-                        images2,
-                        const Align(
+                          ))
+                    ]),
+                  )),
+              SizedBox(
+                height: 10.h,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Practicelisten()));
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.r)),
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    elevation: 1,
+                    // color: Color.fromRGBO(235, 239, 245, 1.0),
+                    /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
+                    width: 370.w,
+                    height: 274.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.r),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          )
+                        ]),*/
+                    child: Column(children: [
+                      images2,
+                      Align(
                           alignment: Alignment.centerLeft,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 1),
-                            title: Text(
-                              'Practice Listening',
-                              style: textstyle_h2_blue,
+                          child: Expanded(
+                            child: ListTile(
+                              contentPadding: EdgeInsets.only(left: 10.w),
+                              title: Text(
+                                'Practice Listening',
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
+                              subtitle: Expanded(
+                                  child: Text(
+                                'Here is where you can listen and pratice Standard Maritime Communication Phrases',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
                             ),
-                            subtitle: Text(
-                              'Here is where you can listen and pratice Standard Maritime Communication Phrases',
-                              style: body_text,
-                            ),
-                          ),
-                        )
-                      ]),
-                    ))
-              ],
-            )
-          ],
-        ));
+                          ))
+                    ]),
+                  ))
+            ],
+          ),
+        )));
   }
 }

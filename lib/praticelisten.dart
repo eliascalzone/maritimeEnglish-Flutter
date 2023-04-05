@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
-import 'package:fluttermaritime/materialdesign.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Practicelisten extends StatefulWidget {
   const Practicelisten({super.key});
@@ -16,14 +16,18 @@ class _PracticelistenState extends State<Practicelisten> {
   final recorder = FlutterSoundRecorder();
   bool isRecorderReady = false;
 
-  Future record() async{
-    if(!isRecorderReady){return;}
+  Future record() async {
+    if (!isRecorderReady) {
+      return;
+    }
 
     await recorder.startRecorder(toFile: 'audio');
   }
 
-  Future stop() async{
-    if(!isRecorderReady){return;}
+  Future stop() async {
+    if (!isRecorderReady) {
+      return;
+    }
 
     final path = await recorder.stopRecorder();
     final audiofile = File(path!);
@@ -45,10 +49,10 @@ class _PracticelistenState extends State<Practicelisten> {
     super.dispose();
   }
 
-  Future initRecorder() async{
+  Future initRecorder() async {
     final status = await Permission.microphone.request();
 
-    if(status != PermissionStatus.granted){
+    if (status != PermissionStatus.granted) {
       throw 'Microphone permission not granted';
     }
 
@@ -58,28 +62,73 @@ class _PracticelistenState extends State<Practicelisten> {
 
   final List<Map<String, dynamic>> _list = List.from(allwords);
   int currentIndex = 0;
-  static const textstyle_alphabet = TextStyle(
-    color: Color.fromRGBO(76, 146, 219, 1.0),
-    fontSize: 18,
+  var textstyle_alphabet = TextStyle(
+    color: const Color.fromRGBO(76, 146, 219, 1.0),
+    fontSize: 18.sp,
     fontWeight: FontWeight.bold,
   );
 
-  static const indexArr = [0,5,13,28,42,48,56,60,65,70,71,79,85,86,94,98,107,131,139,143,148];
-  static const letterArr = ['A','B','C','D','E','F','G','H','I','J','L','M','N','O','P','R','S','T','U','V','W'];
+  static const indexArr = [
+    0,
+    5,
+    13,
+    28,
+    42,
+    48,
+    56,
+    60,
+    65,
+    70,
+    71,
+    79,
+    85,
+    86,
+    94,
+    98,
+    107,
+    131,
+    139,
+    143,
+    148
+  ];
+  static const letterArr = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W'
+  ];
 
-  Color letterColor(int index){
-    if(currentIndex<=indexArr[index] && currentIndex>=148){
+  Color letterColor(int index) {
+    if (currentIndex <= indexArr[index] && currentIndex >= 148) {
       return const Color.fromARGB(30, 33, 149, 243);
-    }
-    else if(currentIndex>=indexArr[index] && currentIndex<indexArr[index+1]){
+    } else if (currentIndex >= indexArr[index] &&
+        currentIndex < indexArr[index + 1]) {
       return const Color.fromARGB(30, 33, 149, 243);
+    } else {
+      return const Color.fromARGB(0, 33, 149, 243);
     }
-    else {return const Color.fromARGB(0, 33, 149, 243);}
   }
 
-  List<Widget> upperButtons(){
+  List<Widget> upperButtons() {
     List<Widget> list = [];
-    for(int i=0;i<21;i++){
+    for (int i = 0; i < 21; i++) {
       list.add(TextButton(
         onPressed: () {
           setState(() {
@@ -102,25 +151,22 @@ class _PracticelistenState extends State<Practicelisten> {
       //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
       appBar: AppBar(
         title: const Text('PRACTICE LISTENING'),
-        titleTextStyle:
-            const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        titleTextStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+        centerTitle: true,
       ),
       body: Column(children: [
-            Container(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              height: 50,
-              child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: 
-                upperButtons()
-          ),
+        Container(
+          padding: EdgeInsets.only(left: 30.sp, right: 30.sp),
+          height: 50.sp,
+          child: ListView(
+              scrollDirection: Axis.horizontal, children: upperButtons()),
         ),
         Container(
-          padding: const EdgeInsets.only(right: 30, left: 30),
+          padding: EdgeInsets.only(right: 30.sp, left: 30.sp, bottom: 20.sp),
           width: MediaQuery.of(context).size.width * 0.86,
-          height: MediaQuery.of(context).size.height * 0.63,
+          height: MediaQuery.of(context).size.height * 0.70,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -137,21 +183,21 @@ class _PracticelistenState extends State<Practicelisten> {
                 flex: 4,
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.sp),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         IconButton(
                             onPressed: () {},
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.volume_up_rounded,
-                              size: 30,
-                              color: Color.fromRGBO(76, 146, 219, 1.0),
+                              size: 30.sp,
+                              color: const Color.fromRGBO(76, 146, 219, 1.0),
                             )),
                         Expanded(
                           child: Text(
                             _list[currentIndex]['name'],
-                            style: textstyle_h1_black,
+                            style: Theme.of(context).textTheme.headline2,
                           ),
                         )
                       ],
@@ -160,23 +206,23 @@ class _PracticelistenState extends State<Practicelisten> {
                       alignment: Alignment.topLeft,
                       child: TextButton(
                           onPressed: () {},
-                          child: const Text(
+                          child: Text(
                             'See translation',
                             style: TextStyle(
-                                color: Color.fromRGBO(76, 146, 219, 1.0),
-                                fontSize: 16,
+                                color: const Color.fromRGBO(76, 146, 219, 1.0),
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.bold),
                           )),
                     ),
-                    const SizedBox(
-                      height: 8,
+                    SizedBox(
+                      height: 8.sp,
                     ),
                     Text(
                       _list[currentIndex]['mean'],
-                      style: body_text,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: 20.sp,
                     ),
                   ],
                 ),
@@ -186,77 +232,72 @@ class _PracticelistenState extends State<Practicelisten> {
               Container(
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
+                      onPressed: () {
+                        // Play recording
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: EdgeInsets.all(10.sp),
+                      ),
+                      child: const Icon(Icons.play_arrow))),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /* Previous Button */
+                  OutlinedButton(
                     onPressed: () {
-                      // Play recording
+                      setState(() {
+                        if (currentIndex == 0) {
+                          currentIndex = _list.length - 1;
+                        } else {
+                          currentIndex--;
+                        }
+                      });
                     },
-                    style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                        ),
-                    child: const Icon(Icons.play_arrow)
-                  )),
-    
-              Expanded(
-                  flex: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    style: OutlinedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: EdgeInsets.all(10.sp),
+                    ),
+                    child: const Icon(Icons.arrow_back_ios_rounded),
+                  ),
 
-                      /* Previous Button */
-                      OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (currentIndex == 0) {
-                              currentIndex = _list.length - 1;
-                            } else {
-                              currentIndex--;
-                            }
-                          });
-                        },
-                        style: OutlinedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                        ),
-                        child: const Icon(Icons.arrow_back_ios_rounded),
+                  /* Record Button */
+                  ElevatedButton(
+                      onPressed: () async {
+                        if (recorder.isRecording) {
+                          await stop();
+                        } else {
+                          await record();
+                        }
+                        setState(() {});
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: EdgeInsets.all(10.sp),
                       ),
+                      child: Icon(
+                        recorder.isRecording ? Icons.stop : Icons.mic,
+                        size: 60,
+                      )),
 
-                      /* Record Button */
-                      ElevatedButton(
-                        onPressed: () async {
-                          if(recorder.isRecording){
-                            await stop();
-                          }
-                          else {
-                            await record();
-                          }
-                          setState(() {});
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                        ),
-                        child: Icon(
-                          recorder.isRecording ? Icons.stop : Icons.mic, size: 60,)
-                      ),
-
-                      /* Next Button */
-                      OutlinedButton(
-                        onPressed: () {
-                          setState(() {
-                            currentIndex++;
-                            if (currentIndex >= _list.length) {
-                              currentIndex = 0;
-                            }
-                          });
-                        },
-                        style: OutlinedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(10),
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios_rounded),
-                      ),
-                    ],
-                  ))
+                  /* Next Button */
+                  OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        currentIndex++;
+                        if (currentIndex >= _list.length) {
+                          currentIndex = 0;
+                        }
+                      });
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      padding: EdgeInsets.all(10.sp),
+                    ),
+                    child: const Icon(Icons.arrow_forward_ios_rounded),
+                  ),
+                ],
+              )
             ],
           ),
         )
