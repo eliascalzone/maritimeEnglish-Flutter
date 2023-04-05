@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/allwordslist.dart';
 import 'package:fluttermaritime/materialdesign.dart';
@@ -15,6 +16,8 @@ class Practicelisten extends StatefulWidget {
 class _PracticelistenState extends State<Practicelisten> {
   final recorder = FlutterSoundRecorder();
   bool isRecorderReady = false;
+  final audioPlayer = AudioPlayer();
+  File latestFile = File('');
 
   Future record() async{
     if(!isRecorderReady){return;}
@@ -26,9 +29,7 @@ class _PracticelistenState extends State<Practicelisten> {
     if(!isRecorderReady){return;}
 
     final path = await recorder.stopRecorder();
-    final audiofile = File(path!);
-
-    print('Recorded audio: $audiofile');
+    latestFile = File(path!);
   }
 
   @override
@@ -186,8 +187,8 @@ class _PracticelistenState extends State<Practicelisten> {
               Container(
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
-                    onPressed: () {
-                      // Play recording
+                    onPressed: () async {
+                      await audioPlayer.play(latestFile.path, isLocal: true);
                     },
                     style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
