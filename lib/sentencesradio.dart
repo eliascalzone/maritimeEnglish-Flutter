@@ -40,12 +40,13 @@ class _RadiosentencesState extends State<Radiosentences> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('GENERAL TERMS'),
-        titleTextStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+        titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 30.sp, right: 30.sp, top: 20.sp),
+          padding: EdgeInsets.only(
+              left: 30.sp, right: 30.sp, top: 20.sp, bottom: 20.sp),
           child: Column(children: [
             TextField(
               onChanged: (value) => _filter(value),

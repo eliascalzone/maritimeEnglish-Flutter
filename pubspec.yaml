@@ -71,6 +71,9 @@ flutter:
    - images/
    - assets/correct.wav
    - assets/incorrect.mp3
+   - assets/welldone.json
+   - assets/yacht.json
+  
    
   #   - images/a_dot_ham.jpeg
 

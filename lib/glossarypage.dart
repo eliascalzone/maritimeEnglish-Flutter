@@ -22,109 +22,114 @@ class Glossarypage extends StatelessWidget {
           centerTitle: true,
           titleTextStyle: Theme.of(context).textTheme.headline3,
         ),
-        body: SafeArea(
-            child: Padding(
-          padding: EdgeInsets.only(left: 30.sp, right: 30.sp, top: 20.sp),
-          child: Column(
-            children: [
-              GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Phrasesmcp()));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.r)),
-                    margin: const EdgeInsets.symmetric(vertical: 6),
-                    elevation: 1,
+        body: SingleChildScrollView(
+          child: SafeArea(
+              child: Padding(
+            padding: EdgeInsets.only(
+                left: 30.sp, right: 30.sp, top: 20.sp, bottom: 20.sp),
+            child: Column(
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Phrasesmcp()));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.r)),
+                      margin: const EdgeInsets.symmetric(vertical: 6),
+                      elevation: 1,
 
-                    /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                    width: 370.w,
-                    height: 274.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          )
-                        ]),*/
-                    child: Column(children: [
-                      images1,
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            title: Text(
-                              'General Phrases',
-                              style: Theme.of(context).textTheme.headline4,
-                            ),
-                            subtitle: Expanded(
-                              child: Text(
-                                'Here is where you can find definitions for Standard Maritime Communication Phrases',
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
-                            ),
-                          ))
-                    ]),
-                  )),
-              SizedBox(
-                height: 10.h,
-              ),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Practicelisten()));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.r)),
-                    margin: const EdgeInsets.symmetric(vertical: 6),
-                    elevation: 1,
-                    // color: Color.fromRGBO(235, 239, 245, 1.0),
-                    /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                    width: 370.w,
-                    height: 274.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          )
-                        ]),*/
-                    child: Column(children: [
-                      images2,
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Expanded(
+                      /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
+                      width: 370.w,
+                      height: 274.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            )
+                          ]),*/
+                      child: Column(children: [
+                        images1,
+                        Align(
+                            alignment: Alignment.centerLeft,
                             child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10.w),
+                              contentPadding: EdgeInsets.only(
+                                  left: 15.sp, right: 15.sp, bottom: 10.sp),
                               title: Text(
-                                'Practice Listening',
+                                'General Phrases',
                                 style: Theme.of(context).textTheme.headline4,
                               ),
                               subtitle: Expanded(
-                                  child: Text(
-                                'Here is where you can listen and pratice Standard Maritime Communication Phrases',
-                                style: Theme.of(context).textTheme.bodyText1,
-                              )),
-                            ),
-                          ))
-                    ]),
-                  ))
-            ],
-          ),
-        )));
+                                child: Text(
+                                  'Here is where you can find definitions for Standard Maritime Communication Phrases',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                ),
+                              ),
+                            ))
+                      ]),
+                    )),
+                SizedBox(
+                  height: 10.h,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Practicelisten()));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.r)),
+                      margin: const EdgeInsets.symmetric(vertical: 6),
+                      elevation: 1,
+                      // color: Color.fromRGBO(235, 239, 245, 1.0),
+                      /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
+                      width: 370.w,
+                      height: 274.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: const Offset(0, 3),
+                            )
+                          ]),*/
+                      child: Column(children: [
+                        images2,
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Expanded(
+                              child: ListTile(
+                                contentPadding: EdgeInsets.only(
+                                    left: 15.sp, right: 15.sp, bottom: 10.sp),
+                                title: Text(
+                                  'Practice Listening',
+                                  style: Theme.of(context).textTheme.headline4,
+                                ),
+                                subtitle: Expanded(
+                                    child: Text(
+                                  'Here is where you can listen and pratice Standard Maritime Communication Phrases',
+                                  style: Theme.of(context).textTheme.bodyText1,
+                                )),
+                              ),
+                            ))
+                      ]),
+                    ))
+              ],
+            ),
+          )),
+        ));
   }
 }

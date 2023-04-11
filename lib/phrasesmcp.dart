@@ -44,7 +44,8 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(top: 20.sp, left: 30.sp, right: 30.sp),
+          padding: EdgeInsets.only(
+              top: 20.sp, left: 30.sp, right: 30.sp, bottom: 20.sp),
           child: Column(children: [
             TextField(
               onChanged: (value) => _filter(value),

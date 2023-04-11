@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaritime/homepage.dart';
 import 'package:fluttermaritime/main.dart';
 import 'package:fluttermaritime/theshipex.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Celebrate extends StatelessWidget {
-  const Celebrate({super.key});
+class Celebrate1 extends StatelessWidget {
+  const Celebrate1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +19,19 @@ class Celebrate extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'WELL DONE!',
+              'LESSON COMPLETED!',
               style: Theme.of(context).textTheme.headline4,
             ),
             Lottie.asset('assets/welldone.json', height: 270.h),
             SizedBox(
               height: 50.h,
             ),
-            /*ElevatedButton(
+            ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ShipExercise()),
-                  );
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyApp()),
+                      (route) => route.isFirst);
                 },
                 style: ButtonStyle(
                     minimumSize:
@@ -39,10 +40,10 @@ class Celebrate extends StatelessWidget {
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.r)))),
                 child: Text(
-                  'CONTINUE',
+                  'BACK TO HOME',
                   style:
                       TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-                )),*/
+                )),
           ],
         ),
       ),

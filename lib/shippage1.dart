@@ -129,8 +129,7 @@ class _Shippage1State extends State<Shippage1> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: const Text('THE SHIP'),
-          titleTextStyle:
-              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
           centerTitle: true,
           leading: IconButton(
             onPressed: () => showDialog(
@@ -172,148 +171,161 @@ class _Shippage1State extends State<Shippage1> {
             icon: Icon(Icons.close),
           ),
         ),
-        body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ListTile(
-                    contentPadding: EdgeInsets.only(left: 30.sp),
-                    title: Text(
-                      'Type the matching word',
-                      style: Theme.of(context).textTheme.headline2,
-                    )),
-                Image.asset(
-                  'images/shipnextexe.png',
-                  width: 370.w,
-                  height: 277.h,
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Column(children: [
-                  SizedBox(
-                      width: 300.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Center(
-                              child: Text(
-                            'Superstructure',
-                            style: Theme.of(context).textTheme.bodyText1,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 20.sp),
+            child: Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ListTile(
+                        contentPadding: EdgeInsets.only(left: 30.sp),
+                        title: Text(
+                          'Type the matching word',
+                          style: Theme.of(context).textTheme.headline2,
+                        )),
+                    Image.asset(
+                      'images/shipnextexe.png',
+                      width: 370.w,
+                      height: 277.h,
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Column(children: [
+                      SizedBox(
+                          width: 300.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                  child: Text(
+                                'Superstructure',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              SizedBox(
+                                width: 150.w,
+                                child: TextFormField(
+                                  controller: controller12,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(4.sp),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                      )),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
                           )),
-                          SizedBox(
-                            width: 150.w,
-                            child: TextFormField(
-                              controller: controller12,
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(4.sp),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  )),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  SizedBox(
-                      width: 300.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Center(
-                              child: Text(
-                            'Anchor',
-                            style: Theme.of(context).textTheme.bodyText1,
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      SizedBox(
+                          width: 300.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                  child: Text(
+                                'Anchor',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              SizedBox(
+                                width: 150.w,
+                                child: TextFormField(
+                                  controller: controller22,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(4.sp),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                      )),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
                           )),
-                          SizedBox(
-                            width: 150.w,
-                            child: TextFormField(
-                              controller: controller22,
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(4.sp),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  )),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  SizedBox(
-                      width: 300.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Center(
-                              child: Text(
-                            'Bow',
-                            style: Theme.of(context).textTheme.bodyText1,
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      SizedBox(
+                          width: 300.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                  child: Text(
+                                'Bow',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              SizedBox(
+                                width: 150.w,
+                                child: TextFormField(
+                                  controller: controller32,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(4.sp),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                      )),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
                           )),
-                          SizedBox(
-                            width: 150.w,
-                            child: TextFormField(
-                              controller: controller32,
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(4.sp),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  )),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      )),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  SizedBox(
-                      width: 300.w,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Center(
-                              child: Text(
-                            'Portside',
-                            style: Theme.of(context).textTheme.bodyText1,
-                          )),
-                          SizedBox(
-                            width: 150.w,
-                            child: TextFormField(
-                              controller: controller42,
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(4.sp),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
-                                  )),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ))
-                ]),
-                ElevatedButton(
-                  onPressed: () {
-                    _submit2();
-                  },
-                  style: ButtonStyle(
-                      fixedSize:
-                          MaterialStateProperty.all<Size>(Size(280.w, 50.h)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.r)))),
-                  child: Text(
-                    'CHECK',
-                    style:
-                        TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-                  ),
-                )
-              ]),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      SizedBox(
+                          width: 300.w,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                  child: Text(
+                                'Portside',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                              SizedBox(
+                                width: 150.w,
+                                child: TextFormField(
+                                  controller: controller42,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(4.sp),
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                      )),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ))
+                    ]),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        _submit2();
+                      },
+                      style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all<Size>(
+                              Size(280.w, 50.h)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.r)))),
+                      child: Text(
+                        'CHECK',
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                    )
+                  ]),
+            ),
+          ),
         ));
   }
 }

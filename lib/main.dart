@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermaritime/homepage.dart';
 import 'package:fluttermaritime/settingspage.dart';
+import 'package:fluttermaritime/theshipex.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -61,6 +62,11 @@ class MyApp extends StatelessWidget {
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
                           color: Color.fromRGBO(76, 146, 219, 1.0),
+                        ),
+                        headline5: GoogleFonts.openSans(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
                         ),
                         subtitle1: GoogleFonts.openSans(
                           fontSize: 16.sp,

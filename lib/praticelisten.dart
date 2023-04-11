@@ -151,157 +151,160 @@ class _PracticelistenState extends State<Practicelisten> {
       //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
       appBar: AppBar(
         title: const Text('PRACTICE LISTENING'),
-        titleTextStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+        titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
       ),
-      body: Column(children: [
-        Container(
-          padding: EdgeInsets.only(left: 30.sp, right: 30.sp),
-          height: 50.sp,
-          child: ListView(
-              scrollDirection: Axis.horizontal, children: upperButtons()),
-        ),
-        Container(
-          padding: EdgeInsets.only(right: 30.sp, left: 30.sp, bottom: 20.sp),
-          width: MediaQuery.of(context).size.width * 0.86,
-          height: MediaQuery.of(context).size.height * 0.70,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                )
-              ],
-              color: Colors.white),
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                flex: 4,
-                child: Column(
-                  children: [
-                    SizedBox(height: 20.sp),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.volume_up_rounded,
-                              size: 30.sp,
-                              color: const Color.fromRGBO(76, 146, 219, 1.0),
-                            )),
-                        Expanded(
-                          child: Text(
-                            _list[currentIndex]['name'],
-                            style: Theme.of(context).textTheme.headline2,
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'See translation',
-                            style: TextStyle(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            padding: EdgeInsets.only(left: 30.sp, right: 30.sp),
+            height: 50.sp,
+            child: ListView(
+                scrollDirection: Axis.horizontal, children: upperButtons()),
+          ),
+          Container(
+            padding: EdgeInsets.only(right: 30.sp, left: 30.sp, bottom: 20.sp),
+            width: MediaQuery.of(context).size.width * 0.86,
+            height: MediaQuery.of(context).size.height * 0.70,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  )
+                ],
+                color: Colors.white),
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 20.sp),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.volume_up_rounded,
+                                size: 30.sp,
                                 color: const Color.fromRGBO(76, 146, 219, 1.0),
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold),
-                          )),
+                              )),
+                          Expanded(
+                            child: Text(
+                              _list[currentIndex]['name'],
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                          )
+                        ],
+                      ),
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'See translation',
+                              style: TextStyle(
+                                  color:
+                                      const Color.fromRGBO(76, 146, 219, 1.0),
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 8.sp,
+                      ),
+                      Text(
+                        _list[currentIndex]['mean'],
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      SizedBox(
+                        height: 20.sp,
+                      ),
+                    ],
+                  ),
+                ),
+
+                /* Playback button */
+                Container(
+                    alignment: Alignment.bottomRight,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          // Play recording
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          padding: EdgeInsets.all(10.sp),
+                        ),
+                        child: const Icon(Icons.play_arrow))),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    /* Previous Button */
+                    OutlinedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (currentIndex == 0) {
+                            currentIndex = _list.length - 1;
+                          } else {
+                            currentIndex--;
+                          }
+                        });
+                      },
+                      style: OutlinedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: EdgeInsets.all(10.sp),
+                      ),
+                      child: const Icon(Icons.arrow_back_ios_rounded),
                     ),
-                    SizedBox(
-                      height: 8.sp,
-                    ),
-                    Text(
-                      _list[currentIndex]['mean'],
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    SizedBox(
-                      height: 20.sp,
+
+                    /* Record Button */
+                    ElevatedButton(
+                        onPressed: () async {
+                          if (recorder.isRecording) {
+                            await stop();
+                          } else {
+                            await record();
+                          }
+                          setState(() {});
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          padding: EdgeInsets.all(10.sp),
+                        ),
+                        child: Icon(
+                          recorder.isRecording ? Icons.stop : Icons.mic,
+                          size: 60,
+                        )),
+
+                    /* Next Button */
+                    OutlinedButton(
+                      onPressed: () {
+                        setState(() {
+                          currentIndex++;
+                          if (currentIndex >= _list.length) {
+                            currentIndex = 0;
+                          }
+                        });
+                      },
+                      style: OutlinedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: EdgeInsets.all(10.sp),
+                      ),
+                      child: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ],
-                ),
-              ),
-
-              /* Playback button */
-              Container(
-                  alignment: Alignment.bottomRight,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        // Play recording
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        padding: EdgeInsets.all(10.sp),
-                      ),
-                      child: const Icon(Icons.play_arrow))),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  /* Previous Button */
-                  OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        if (currentIndex == 0) {
-                          currentIndex = _list.length - 1;
-                        } else {
-                          currentIndex--;
-                        }
-                      });
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: EdgeInsets.all(10.sp),
-                    ),
-                    child: const Icon(Icons.arrow_back_ios_rounded),
-                  ),
-
-                  /* Record Button */
-                  ElevatedButton(
-                      onPressed: () async {
-                        if (recorder.isRecording) {
-                          await stop();
-                        } else {
-                          await record();
-                        }
-                        setState(() {});
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        padding: EdgeInsets.all(10.sp),
-                      ),
-                      child: Icon(
-                        recorder.isRecording ? Icons.stop : Icons.mic,
-                        size: 60,
-                      )),
-
-                  /* Next Button */
-                  OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        currentIndex++;
-                        if (currentIndex >= _list.length) {
-                          currentIndex = 0;
-                        }
-                      });
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: EdgeInsets.all(10.sp),
-                    ),
-                    child: const Icon(Icons.arrow_forward_ios_rounded),
-                  ),
-                ],
-              )
-            ],
-          ),
-        )
-      ]),
+                )
+              ],
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

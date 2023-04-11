@@ -102,8 +102,7 @@ class _ShippageState extends State<Shippage> {
         //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
         appBar: AppBar(
           title: const Text('THE SHIP'),
-          titleTextStyle:
-              TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
           centerTitle: true,
           automaticallyImplyLeading: false,
           leading: IconButton(
@@ -148,149 +147,157 @@ class _ShippageState extends State<Shippage> {
             ),
           ),
         ),
-        body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-              ListTile(
-                  contentPadding: EdgeInsets.only(left: 30.sp),
-                  title: Text(
-                    'Type the matching word',
-                    style: Theme.of(context).textTheme.headline2,
-                  )),
-              Image.asset(
-                'images/shipexe.png',
-                width: 370.w,
-                height: 277.h,
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              Column(children: [
-                SizedBox(
-                    width: 300.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(
-                            child: Text(
-                          'Deck',
-                          style: Theme.of(context).textTheme.bodyText1,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 20.sp),
+            child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                  ListTile(
+                      contentPadding: EdgeInsets.only(left: 30.sp),
+                      title: Text(
+                        'Type the matching word',
+                        style: Theme.of(context).textTheme.headline2,
+                      )),
+                  Image.asset(
+                    'images/shipexe.png',
+                    //MediaQuery.of(context).size.width * 1.0,
+                    width: 370.w,
+                    height: 277.h,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Column(children: [
+                    SizedBox(
+                        width: 300.w,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                                child: Text(
+                              'Deck',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            )),
+                            SizedBox(
+                              width: 150.w,
+                              child: TextField(
+                                controller: controller1,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(4.sp),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                    )),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         )),
-                        SizedBox(
-                          width: 150.w,
-                          child: TextField(
-                            controller: controller1,
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(4.sp),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                )),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    )),
-                SizedBox(
-                  height: 8.h,
-                ),
-                SizedBox(
-                    width: 300.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(
-                            child: Text(
-                          'Propeller',
-                          style: Theme.of(context).textTheme.bodyText1,
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    SizedBox(
+                        width: 300.w,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                                child: Text(
+                              'Propeller',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            )),
+                            SizedBox(
+                              width: 150.w,
+                              child: TextField(
+                                controller: controller2,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(4.sp),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                    )),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         )),
-                        SizedBox(
-                          width: 150.w,
-                          child: TextField(
-                            controller: controller2,
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(4.sp),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                )),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    )),
-                SizedBox(
-                  height: 8.h,
-                ),
-                SizedBox(
-                    width: 300.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(
-                            child: Text(
-                          'Funnel',
-                          style: Theme.of(context).textTheme.bodyText1,
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    SizedBox(
+                        width: 300.w,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                                child: Text(
+                              'Funnel',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            )),
+                            SizedBox(
+                              width: 150.w,
+                              child: TextField(
+                                controller: controller3,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(4.sp),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20.r),
+                                    )),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         )),
-                        SizedBox(
-                          width: 150.w,
-                          child: TextField(
-                            controller: controller3,
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(4.sp),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20.r),
-                                )),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    )),
-                SizedBox(
-                  height: 8.h,
-                ),
-                SizedBox(
-                    width: 300.w,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(
-                            child: Text(
-                          'Stern',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        )),
-                        SizedBox(
-                          width: 150.w,
-                          child: TextField(
-                            controller: controller4,
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(4.sp),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r))),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ],
-                    ))
-              ]),
-              SizedBox(
-                height: 20.h,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _submit();
-                },
-                style: ButtonStyle(
-                    fixedSize:
-                        MaterialStateProperty.all<Size>(Size(280.w, 50.h)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.r)))),
-                child: Text(
-                  'CHECK',
-                  style:
-                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ])));
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    SizedBox(
+                        width: 300.w,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                                child: Text(
+                              'Stern',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            )),
+                            SizedBox(
+                              width: 150.w,
+                              child: TextField(
+                                controller: controller4,
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.all(4.sp),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r))),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ))
+                  ]),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      _submit();
+                    },
+                    style: ButtonStyle(
+                        minimumSize:
+                            MaterialStateProperty.all<Size>(Size(280.w, 50.h)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(20.r)))),
+                    child: Text(
+                      'CHECK',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
+                ])),
+          ),
+        ));
   }
 }
