@@ -17,7 +17,7 @@ class _PracticelistenState extends State<Practicelisten> {
   final recorder = FlutterSoundRecorder();
   bool isRecorderReady = false;
   final audioPlayer = AudioPlayer();
-  File latestFile = File('');
+  String? latestFile;
 
   Future record() async {
     if (!isRecorderReady) {
@@ -33,7 +33,7 @@ class _PracticelistenState extends State<Practicelisten> {
     }
 
     final path = await recorder.stopRecorder();
-    latestFile = File(path!);
+    latestFile = path!;
   }
 
   @override
@@ -234,7 +234,7 @@ class _PracticelistenState extends State<Practicelisten> {
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
                       onPressed: () async {
-                        await audioPlayer.play(latestFile.path, isLocal: true);
+                        await audioPlayer.play(latestFile!, isLocal: true);
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),

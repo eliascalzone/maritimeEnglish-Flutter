@@ -39,21 +39,6 @@ class Glossarypage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.r)),
                     margin: const EdgeInsets.symmetric(vertical: 6),
                     elevation: 1,
-
-                    /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                    width: 370.w,
-                    height: 274.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          )
-                        ]),*/
                     child: Column(children: [
                       images1,
                       Align(
@@ -64,11 +49,9 @@ class Glossarypage extends StatelessWidget {
                               'General Phrases',
                               style: Theme.of(context).textTheme.headline4,
                             ),
-                            subtitle: Expanded(
-                              child: Text(
-                                'Here is where you can find definitions for Standard Maritime Communication Phrases',
-                                style: Theme.of(context).textTheme.bodyText1,
-                              ),
+                            subtitle: Text(
+                              'Here is where you can find definitions for Standard Maritime Communication Phrases',
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                           ))
                     ]),
@@ -88,39 +71,21 @@ class Glossarypage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.r)),
                     margin: const EdgeInsets.symmetric(vertical: 6),
                     elevation: 1,
-                    // color: Color.fromRGBO(235, 239, 245, 1.0),
-                    /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                    width: 370.w,
-                    height: 274.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          )
-                        ]),*/
                     child: Column(children: [
                       images2,
                       Align(
-                          alignment: Alignment.centerLeft,
-                          child: Expanded(
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 10.w),
-                              title: Text(
-                                'Practice Listening',
-                                style: Theme.of(context).textTheme.headline4,
-                              ),
-                              subtitle: Expanded(
-                                  child: Text(
-                                'Here is where you can listen and pratice Standard Maritime Communication Phrases',
-                                style: Theme.of(context).textTheme.bodyText1,
-                              )),
+                        alignment: Alignment.centerLeft,
+                        child: ListTile(
+                            contentPadding: EdgeInsets.only(left: 10.w),
+                            title: Text(
+                              'Practice Listening',
+                              style: Theme.of(context).textTheme.headline4,
                             ),
-                          ))
+                            subtitle: Text(
+                              'Here is where you can listen and pratice Standard Maritime Communication Phrases',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            )),
+                      )
                     ]),
                   ))
             ],

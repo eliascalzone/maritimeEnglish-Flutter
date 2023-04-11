@@ -30,7 +30,7 @@ class Radiocompage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
             )),
       ),
@@ -51,20 +51,6 @@ class Radiocompage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.r)),
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       elevation: 1,
-                      /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                      width: 370.w,
-                      height: 274.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),*/
                       child: Column(children: [
                         images1,
                         Align(
@@ -98,21 +84,6 @@ class Radiocompage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.r)),
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       elevation: 1,
-                      // color: Color.fromRGBO(235, 239, 245, 1.0),
-                      /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                      width: 370.w,
-                      height: 274.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),*/
                       child: Column(children: [
                         images3,
                         Align(
