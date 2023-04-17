@@ -16,7 +16,7 @@ class Glossarypage extends StatelessWidget {
     var images2 = Image.asset('images/practicing_listen.png',
         width: 370.w, height: 160.h);
     return Scaffold(
-        //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
+        backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
         appBar: AppBar(
           title: const Text('STANDARD COMMUNICATION'),
           centerTitle: true,
@@ -41,39 +41,23 @@ class Glossarypage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.r)),
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       elevation: 1,
-
-                      /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                      width: 370.w,
-                      height: 274.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),*/
                       child: Column(children: [
                         images1,
                         Align(
-                            alignment: Alignment.centerLeft,
-                            child: ListTile(
-                              contentPadding: EdgeInsets.only(
-                                  left: 15.sp, right: 15.sp, bottom: 10.sp),
-                              title: Text(
-                                'General Phrases',
-                                style: Theme.of(context).textTheme.headline4,
-                              ),
-                              subtitle: Expanded(
-                                child: Text(
-                                  'Here is where you can find definitions for Standard Maritime Communication Phrases',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              ),
-                            ))
+                          alignment: Alignment.centerLeft,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(
+                                left: 15.sp, right: 15.sp, bottom: 10.sp),
+                            title: Text(
+                              'General Phrases',
+                              style: Theme.of(context).textTheme.headline4,
+                            ),
+                            subtitle: Text(
+                              'Here is where you can find definitions for Standard Maritime Communication Phrases',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        )
                       ]),
                     )),
                 SizedBox(
@@ -91,40 +75,22 @@ class Glossarypage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.r)),
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       elevation: 1,
-                      // color: Color.fromRGBO(235, 239, 245, 1.0),
-                      /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                      width: 370.w,
-                      height: 274.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            )
-                          ]),*/
                       child: Column(children: [
                         images2,
                         Align(
-                            alignment: Alignment.centerLeft,
-                            child: Expanded(
-                              child: ListTile(
-                                contentPadding: EdgeInsets.only(
-                                    left: 15.sp, right: 15.sp, bottom: 10.sp),
-                                title: Text(
-                                  'Practice Listening',
-                                  style: Theme.of(context).textTheme.headline4,
-                                ),
-                                subtitle: Expanded(
-                                    child: Text(
-                                  'Here is where you can listen and pratice Standard Maritime Communication Phrases',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                )),
+                          alignment: Alignment.centerLeft,
+                          child: ListTile(
+                              contentPadding: EdgeInsets.only(
+                                  left: 15.sp, right: 15.sp, bottom: 10.sp),
+                              title: Text(
+                                'Practice Listening',
+                                style: Theme.of(context).textTheme.headline4,
                               ),
-                            ))
+                              subtitle: Text(
+                                'Here is where you can listen and pratice Standard Maritime Communication Phrases',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              )),
+                        ),
                       ]),
                     ))
               ],

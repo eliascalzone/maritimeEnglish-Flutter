@@ -43,41 +43,47 @@ class MyApp extends StatelessWidget {
                       displayColor: Colors.black,
                     )
                     .copyWith(
-                        headline1: GoogleFonts.openSans(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        headline2: GoogleFonts.openSans(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        headline3: GoogleFonts.openSans(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        headline4: GoogleFonts.openSans(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(76, 146, 219, 1.0),
-                        ),
-                        headline5: GoogleFonts.openSans(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white,
-                        ),
-                        subtitle1: GoogleFonts.openSans(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        bodyText1: GoogleFonts.openSans(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                        )),
+                      headline1: GoogleFonts.openSans(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      headline2: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      headline3: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      headline4: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(76, 146, 219, 1.0),
+                      ),
+                      headline5: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.white,
+                      ),
+                      subtitle1: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      bodyText1: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black,
+                      ),
+                      bodyText2: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Color.fromRGBO(76, 146, 219, 1.0),
+                      ),
+                    ),
               ),
               home: RootPage(),
             );

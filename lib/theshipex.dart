@@ -7,14 +7,90 @@ import 'package:fluttermaritime/radiocompage.dart';
 
 class ShipExercise extends StatefulWidget {
   const ShipExercise({Key? key}) : super(key: key);
-  //final ValueChanged<List<Map<String, List<ShipPart>>>> restart;
 
   @override
   State<ShipExercise> createState() => _ShipExerciseState();
 }
 
 class _ShipExerciseState extends State<ShipExercise> {
-  final List<Map<String, List<ShipPart>>> shiplist = List.from(shipList);
+  List<Map<String, List<ShipPart>>> shiplist = [];
+
+  List<ShipPart> list1 = [
+    ShipPart('radar scanner', '1'),
+    ShipPart('radio antenna', '2'),
+    ShipPart('the navigation bridge', '3'),
+    ShipPart('rescue boat', '4'),
+    ShipPart('the superstructure', '5'),
+  ];
+  List<ShipPart> list2 = [
+    ShipPart('crane', '6'),
+    ShipPart('mooring winch', '7'),
+    ShipPart('the hull', '8'),
+    ShipPart('the windlass', '9'),
+    ShipPart('hatch cover', '10'),
+  ];
+  List<ShipPart> list3 = [
+    ShipPart('the poop deck', '11'),
+    ShipPart('funnels', '12'),
+    ShipPart('the main deck', '13'),
+    ShipPart('tween deck', '14'),
+  ];
+  List<ShipPart> list4 = [
+    ShipPart('hold', '15'),
+    ShipPart('bottom', '16'),
+    ShipPart('bulkhead', '17'),
+    ShipPart('engine room', '18'),
+    ShipPart('ladder', '19'),
+  ];
+
+  List<ShipPart> list5 = [
+    ShipPart('forward', '1'),
+    ShipPart('aft', '2'),
+    ShipPart('breadth', '3'),
+    ShipPart('abeam', '4'),
+    ShipPart('midships', '5'),
+  ];
+  List<ShipPart> list6 = [
+    ShipPart('centre line', '6'),
+    ShipPart('starboard bow', '7'),
+    ShipPart('STARBOARD', '8'),
+    ShipPart('starboard quarter', '9'),
+  ];
+  List<ShipPart> list7 = [
+    ShipPart('port quater', '10'),
+    ShipPart('PORT', '11'),
+    ShipPart('port bow', '12'),
+    ShipPart('ahead', '13'),
+    ShipPart('astern', '14'),
+  ];
+  List<ShipPart> list8 = [
+    ShipPart('stern line', '15'),
+    ShipPart('aft breast line', '16'),
+    ShipPart('bow', '17'),
+    ShipPart('ahead', '18'),
+    ShipPart('forecastle', '19'),
+  ];
+
+  List<ShipPart> list9 = [
+    ShipPart('under-keel\nclearance', '1'),
+    ShipPart('freeboard', '2'),
+    ShipPart('air draft', '3'),
+    ShipPart('draft', '4'),
+  ];
+
+  List<ShipPart> list10 = [
+    ShipPart('forward spring', '5'),
+    ShipPart('breast line', '6'),
+    ShipPart('head line', '7'),
+    ShipPart('buoy line', '8'),
+  ];
+  List<ShipPart> list11 = [
+    ShipPart('fairlead', '9'),
+    ShipPart('centre lead', '10'),
+    ShipPart('roller fairlead', '11'),
+    ShipPart('capstan', '12'),
+  ];
+
   final FlutterTts flutterTts = FlutterTts();
   List<ShipPart> shuffledShipParts = [];
   int currentIndex = 0;
@@ -22,6 +98,23 @@ class _ShipExerciseState extends State<ShipExercise> {
   @override
   void initState() {
     super.initState();
+    initGame();
+  }
+
+  initGame() {
+    shiplist = [
+      {'images/pic1.png': list1},
+      {'images/pic2.png': list2},
+      {'images/pic3.png': list3},
+      {'images/pic4.png': list4},
+      {'images/pic5.png': list5},
+      {'images/pic6.png': list6},
+      {'images/pic7.png': list7},
+      {'images/pic8.png': list8},
+      {'images/pic9.png': list9},
+      {'images/pic10.png': list10},
+      {'images/pic11.png': list11},
+    ];
     // Shuffle the list of draggable items once when the state is initialized
     shuffledShipParts = shiplist[currentIndex].values.first.toList()..shuffle();
   }
@@ -30,46 +123,26 @@ class _ShipExerciseState extends State<ShipExercise> {
     setState(() {
       currentIndex++;
       if (currentIndex == shiplist.length) {
-        currentIndex = 0;
-        /*Navigator.pushAndRemoveUntil(
+        Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => Celebrate1()),
-            (route) => route.isFirst);*/
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => Celebrate1()),
-        );
-        print('Restarting game...');
-        print('Before restart: currentIndex=$currentIndex, shiplist=$shiplist');
-
+            ((route) => route.isFirst));
         restartGame();
-        print('After restart: currentIndex=$currentIndex, shiplist=$shiplist');
+        setState(() {});
+      } else {
+        shuffledShipParts = shiplist[currentIndex].values.first.toList()
+          ..shuffle();
       }
-
-      shuffledShipParts = shiplist[currentIndex].values.first.toList()
-        ..shuffle();
     });
   }
 
   void restartGame() {
     setState(() {
       shiplist.clear();
-      print('Clear shiplist: currentIndex=$currentIndex, shiplist=$shiplist');
-      /*shiplist[currentIndex]
-          .values
-          .first
-          .addAll(shiplist[currentIndex].values.first);*/
-
-      //shiplist.addAll([...shipList]);
-      final List<Map<String, List<ShipPart>>> copyShiplist =
-          List.from(shipList);
-      shiplist.addAll(copyShiplist);
-
-      print('Add all shiplist: currentIndex=$currentIndex, shiplist=$shiplist');
+      shiplist.addAll(List.from(shipList));
       currentIndex = 0;
       shuffledShipParts = shiplist[currentIndex].values.first.toList()
         ..shuffle();
-      print('Game restarted.');
     });
   }
 
@@ -126,7 +199,7 @@ class _ShipExerciseState extends State<ShipExercise> {
           ),
         ),
       ),
-      backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
+      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
@@ -138,7 +211,7 @@ class _ShipExerciseState extends State<ShipExercise> {
               ListTile(
                   contentPadding: EdgeInsets.only(left: 30.sp),
                   title: Text(
-                    'Drag the matching pairs',
+                    'Match the words with the numbers',
                     style: Theme.of(context).textTheme.headline2,
                   )),
               Container(
@@ -146,9 +219,12 @@ class _ShipExerciseState extends State<ShipExercise> {
                 height: 300.h,
                 width: double.infinity,
                 child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 20.sp, right: 20.sp, top: 20.sp, bottom: 20.sp),
-                    child: Image.asset(shiplist[currentIndex].keys.first)),
+                  padding: EdgeInsets.only(
+                      left: 20.sp, right: 20.sp, top: 20.sp, bottom: 20.sp),
+                  child: Image.asset(
+                    shiplist[currentIndex].keys.first,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 20.h,

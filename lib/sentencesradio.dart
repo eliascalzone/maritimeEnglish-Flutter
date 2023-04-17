@@ -38,6 +38,7 @@ class _RadiosentencesState extends State<Radiosentences> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
         title: const Text('GENERAL TERMS'),
         titleTextStyle: Theme.of(context).textTheme.headline3,

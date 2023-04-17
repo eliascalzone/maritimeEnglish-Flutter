@@ -149,7 +149,7 @@ class _PracticelistenState extends State<Practicelisten> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
+      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
         title: const Text('PRACTICE LISTENING'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
@@ -157,16 +157,22 @@ class _PracticelistenState extends State<Practicelisten> {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
+          SizedBox(
+            height: 10.h,
+          ),
           Container(
             padding: EdgeInsets.only(left: 30.sp, right: 30.sp),
             height: 50.sp,
             child: ListView(
                 scrollDirection: Axis.horizontal, children: upperButtons()),
           ),
+          SizedBox(
+            height: 10.h,
+          ),
           Container(
             padding: EdgeInsets.only(right: 30.sp, left: 30.sp, bottom: 20.sp),
             width: MediaQuery.of(context).size.width * 0.86,
-            height: MediaQuery.of(context).size.height * 0.70,
+            height: MediaQuery.of(context).size.height * 0.60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.r),
                 boxShadow: [
@@ -187,15 +193,20 @@ class _PracticelistenState extends State<Practicelisten> {
                     children: [
                       SizedBox(height: 20.sp),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.volume_up_rounded,
-                                size: 30.sp,
-                                color: const Color.fromRGBO(76, 146, 219, 1.0),
-                              )),
+                          SizedBox(
+                            width: 40.sp,
+                            height: 40.sp,
+                            child: IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.volume_up_rounded,
+                                  size: 30.sp,
+                                  color:
+                                      const Color.fromRGBO(76, 146, 219, 1.0),
+                                )),
+                          ),
                           Expanded(
                             child: Text(
                               _list[currentIndex]['name'],
@@ -204,18 +215,15 @@ class _PracticelistenState extends State<Practicelisten> {
                           )
                         ],
                       ),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'See translation',
-                              style: TextStyle(
-                                  color:
-                                      const Color.fromRGBO(76, 146, 219, 1.0),
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold),
-                            )),
+                      SizedBox(
+                        height: 12.sp,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Definitions: ',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
                       ),
                       SizedBox(
                         height: 8.sp,
@@ -242,7 +250,10 @@ class _PracticelistenState extends State<Practicelisten> {
                           shape: const CircleBorder(),
                           padding: EdgeInsets.all(10.sp),
                         ),
-                        child: const Icon(Icons.play_arrow))),
+                        child: Icon(
+                          Icons.play_arrow,
+                          size: 20.sp,
+                        ))),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -261,7 +272,10 @@ class _PracticelistenState extends State<Practicelisten> {
                         shape: const CircleBorder(),
                         padding: EdgeInsets.all(10.sp),
                       ),
-                      child: const Icon(Icons.arrow_back_ios_rounded),
+                      child: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: 20.sp,
+                      ),
                     ),
 
                     /* Record Button */
@@ -280,7 +294,7 @@ class _PracticelistenState extends State<Practicelisten> {
                         ),
                         child: Icon(
                           recorder.isRecording ? Icons.stop : Icons.mic,
-                          size: 60,
+                          size: 50.sp,
                         )),
 
                     /* Next Button */
@@ -297,7 +311,10 @@ class _PracticelistenState extends State<Practicelisten> {
                         shape: const CircleBorder(),
                         padding: EdgeInsets.all(10.sp),
                       ),
-                      child: const Icon(Icons.arrow_forward_ios_rounded),
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 20.sp,
+                      ),
                     ),
                   ],
                 )

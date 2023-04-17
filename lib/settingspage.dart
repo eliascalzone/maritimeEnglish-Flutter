@@ -6,7 +6,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
-        );
+      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
+    );
   }
 }

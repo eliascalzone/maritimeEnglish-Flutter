@@ -4,9 +4,14 @@ import 'package:fluttermaritime/shippage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermaritime/theshipex.dart';
 
-class Radiocompage extends StatelessWidget {
+class Radiocompage extends StatefulWidget {
   const Radiocompage({super.key});
 
+  @override
+  State<Radiocompage> createState() => _RadiocompageState();
+}
+
+class _RadiocompageState extends State<Radiocompage> {
   @override
   Widget build(BuildContext context) {
     var images1 = Image.asset(
@@ -21,7 +26,7 @@ class Radiocompage extends StatelessWidget {
     );
 
     return Scaffold(
-      //backgroundColor: const Color.fromRGBO(235, 239, 245, 1.0),
+      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
         title: const Text('RADIO COMMUNICATION'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
@@ -54,20 +59,6 @@ class Radiocompage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20.r)),
                         margin: const EdgeInsets.symmetric(vertical: 6),
                         elevation: 1,
-                        /*padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                        width: 370.w,
-                        height: 274.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.r),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              )
-                            ]),*/
                         child: Column(children: [
                           images1,
                           Align(
@@ -93,34 +84,13 @@ class Radiocompage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ShipExercise(
-                                    //key: UniqueKey(),
-                                    //shiplist.addAll(List.from(shipList));
-
-                                    //Shippage
-                                    // onSubmit: (String value) {},
-                                    )));
+                                builder: (context) => ShipExercise()));
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.r)),
                         margin: const EdgeInsets.symmetric(vertical: 6),
                         elevation: 1,
-                        // color: Color.fromRGBO(235, 239, 245, 1.0),
-                        /* padding: EdgeInsets.only(right: 10.sp, left: 10.sp),
-                        width: 370.w,
-                        height: 274.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.r),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              )
-                            ]),*/
                         child: Column(children: [
                           images3,
                           Align(
