@@ -90,7 +90,8 @@ class _PracticelistenState extends State<Practicelisten> {
     131,
     139,
     143,
-    148
+    148,
+    153
   ];
   static const letterArr = [
     'A',
@@ -117,10 +118,7 @@ class _PracticelistenState extends State<Practicelisten> {
   ];
 
   Color letterColor(int index) {
-    if (currentIndex <= indexArr[index] && currentIndex >= 148) {
-      return const Color.fromARGB(30, 33, 149, 243);
-    } else if (currentIndex >= indexArr[index] &&
-        currentIndex < indexArr[index + 1]) {
+    if (currentIndex >= indexArr[index] && currentIndex < indexArr[index + 1]) {
       return const Color.fromARGB(30, 33, 149, 243);
     } else {
       return const Color.fromARGB(0, 33, 149, 243);
