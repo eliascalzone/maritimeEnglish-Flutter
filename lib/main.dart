@@ -4,6 +4,7 @@ import 'package:fluttermaritime/homepage.dart';
 import 'package:fluttermaritime/settingspage.dart';
 import 'package:fluttermaritime/theshipex.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -85,7 +86,18 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
               ),
-              home: RootPage(),
+              home: Stack(children: [
+                AnimatedSplashScreen(
+                  splash: Text('MARITIME ENGLISH',
+                      style: GoogleFonts.openSans(
+                          color: Colors.white,
+                          fontSize: 32.sp,
+                          fontWeight: FontWeight.bold)),
+                  nextScreen: RootPage(),
+                  backgroundColor: Color.fromRGBO(76, 146, 219, 1),
+                  duration: 4000,
+                ),
+              ]),
             );
           },
         );
@@ -117,17 +129,20 @@ class _RootPageState extends State<RootPage> {
             fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
       ),
       body: pages[currentPage],
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.settings), label: 'Settings'),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
         ],
-        onDestinationSelected: (int index) {
+        currentIndex: currentPage,
+        selectedItemColor: Color.fromRGBO(76, 146, 219, 1),
+        onTap: (int index) {
           setState(() {
             currentPage = index;
           });
         },
-        selectedIndex: currentPage,
       ),
     );
   }

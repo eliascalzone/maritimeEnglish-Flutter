@@ -39,6 +39,7 @@ dependencies:
   flutter_sound: ^9.2.13
   permission_handler: ^10.2.0
   flutter_screenutil: ^5.7.0
+  animated_splash_screen: ^1.3.0
   
 
   
@@ -73,6 +74,7 @@ flutter:
    - assets/incorrect.mp3
    - assets/welldone.json
    - assets/yacht.json
+  
   
    
   #   - images/a_dot_ham.jpeg
