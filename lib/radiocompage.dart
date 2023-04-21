@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/sentencesradio.dart';
-import 'package:fluttermaritime/shippage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermaritime/theshipex.dart';
 
@@ -26,7 +25,7 @@ class _RadiocompageState extends State<Radiocompage> {
     );
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
+      backgroundColor: const Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
         title: const Text('RADIO COMMUNICATION'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
