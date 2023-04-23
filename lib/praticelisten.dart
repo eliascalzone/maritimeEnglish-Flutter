@@ -151,7 +151,7 @@ class _PracticelistenState extends State<Practicelisten> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
-        title: const Text('PRACTICE LISTENING'),
+        title: const Text('Practice Listening'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
       ),

@@ -28,7 +28,7 @@ class _RadiocompageState extends State<Radiocompage> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
-        title: const Text('RADIO COMMUNICATION'),
+        title: const Text('Radio Communication'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
         automaticallyImplyLeading: false,

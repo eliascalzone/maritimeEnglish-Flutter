@@ -151,7 +151,7 @@ class _ShipExerciseState extends State<ShipExercise> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'THE SHIP',
+          'The Ship',
           style: Theme.of(context).textTheme.headline3,
         ),
         centerTitle: true,

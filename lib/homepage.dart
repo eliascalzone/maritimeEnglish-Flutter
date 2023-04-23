@@ -20,6 +20,11 @@ class Homepage extends StatelessWidget {
     var icon_next = Icon(Icons.arrow_forward_ios_rounded,
         color: Color.fromRGBO(251, 127, 46, 1), size: 20.sp);
     return Scaffold(
+        appBar: AppBar(
+          title: Text('MARITIME ENGLISH'),
+          titleTextStyle: Theme.of(context).textTheme.headline3,
+          centerTitle: true,
+        ),
         backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
         body: SingleChildScrollView(
           child: SafeArea(
@@ -75,7 +80,7 @@ class Homepage extends StatelessWidget {
                                       child: Text(
                                     'Standard Communication',
                                     style:
-                                        Theme.of(context).textTheme.headline2,
+                                        Theme.of(context).textTheme.subtitle1,
                                   )),
                                   icon_next,
                                 ]),
@@ -115,7 +120,7 @@ class Homepage extends StatelessWidget {
                                     child: Text(
                                       'Radio Communication',
                                       style:
-                                          Theme.of(context).textTheme.headline2,
+                                          Theme.of(context).textTheme.subtitle1,
                                     ),
                                   ),
                                   icon_next

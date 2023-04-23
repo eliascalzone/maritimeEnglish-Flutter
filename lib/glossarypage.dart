@@ -18,7 +18,7 @@ class Glossarypage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
         appBar: AppBar(
-          title: const Text('STANDARD COMMUNICATION'),
+          title: const Text('Standard Communication'),
           centerTitle: true,
           titleTextStyle: Theme.of(context).textTheme.headline3,
         ),

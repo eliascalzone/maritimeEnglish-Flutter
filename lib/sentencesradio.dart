@@ -40,7 +40,7 @@ class _RadiosentencesState extends State<Radiosentences> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
       appBar: AppBar(
-        title: const Text('GENERAL TERMS'),
+        title: const Text('General Terms'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermaritime/homepage.dart';
 import 'package:fluttermaritime/settingspage.dart';
-import 'package:fluttermaritime/theshipex.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
@@ -10,9 +9,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isDarkModeEnable = false;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,11 @@ class MyApp extends StatelessWidget {
           builder: (BuildContext context) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
+              darkTheme: ThemeData.dark().copyWith(
+                appBarTheme: AppBarTheme(color: Color(0xFF253341)),
+                scaffoldBackgroundColor: Color(0xFF15202b),
+              ),
+              themeMode: isDarkModeEnable ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 primarySwatch: const MaterialColor(
                   0xFF4C92DB,
@@ -105,6 +115,12 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
     );
   }
+
+  void onStateChanged(bool isDarkModeEnable) {
+    setState(() {
+      this.isDarkModeEnable = isDarkModeEnable;
+    });
+  }
 }
 
 class RootPage extends StatefulWidget {
@@ -120,14 +136,6 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'MARITIME ENGLISH',
-        ),
-        centerTitle: true,
-        titleTextStyle: TextStyle(
-            fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
-      ),
       body: pages[currentPage],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),

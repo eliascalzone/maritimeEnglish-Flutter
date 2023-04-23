@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/homepage.dart';
-import 'package:fluttermaritime/main.dart';
-import 'package:fluttermaritime/theshipex.dart';
+import 'package:fluttermaritime/radiocompage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +27,8 @@ class Celebrate1 extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => MyApp()),
+                          MaterialPageRoute(
+                              builder: (context) => Radiocompage()),
                           (route) => route.isFirst);
                     },
                     style: ButtonStyle(
