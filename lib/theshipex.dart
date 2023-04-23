@@ -13,8 +13,8 @@ class ShipExercise extends StatefulWidget {
 }
 
 class _ShipExerciseState extends State<ShipExercise> {
+  int score = 0;
   List<Map<String, List<ShipPart>>> shiplist = [];
-
   List<ShipPart> list1 = [
     ShipPart('radar scanner', '1'),
     ShipPart('radio antenna', '2'),
@@ -102,6 +102,7 @@ class _ShipExerciseState extends State<ShipExercise> {
   }
 
   initGame() {
+    score = 0;
     shiplist = [
       {'images/pic1.png': list1},
       {'images/pic2.png': list2},
@@ -125,7 +126,7 @@ class _ShipExerciseState extends State<ShipExercise> {
       if (currentIndex == shiplist.length) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => Celebrate1()),
+            MaterialPageRoute(builder: (context) => Celebrate()),
             ((route) => route.isFirst));
         restartGame();
         setState(() {});
@@ -208,6 +209,20 @@ class _ShipExerciseState extends State<ShipExercise> {
           ),
           child: Column(
             children: [
+              Text.rich(TextSpan(children: [
+                TextSpan(
+                    text: "Score: ",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold)),
+                TextSpan(
+                    text: "$score" + " / 50",
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold))
+              ])),
               ListTile(
                   contentPadding: EdgeInsets.only(left: 30.sp),
                   title: Text(
@@ -297,6 +312,11 @@ class _ShipExerciseState extends State<ShipExercise> {
                                             .values
                                             .first
                                             .remove(receivedItem);
+                                        score += 1;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        score -= 1;
                                       });
                                     }
                                   });

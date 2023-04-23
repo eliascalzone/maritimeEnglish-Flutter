@@ -3,8 +3,8 @@ import 'package:fluttermaritime/radiocompage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Celebrate1 extends StatelessWidget {
-  const Celebrate1({super.key});
+class Celebrate extends StatelessWidget {
+  const Celebrate({super.key});
 
   @override
   Widget build(BuildContext context) {
