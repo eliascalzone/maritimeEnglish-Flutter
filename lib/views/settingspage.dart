@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttermaritime/about.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {
@@ -34,6 +35,64 @@ class _SettingsState extends State<Settings> {
         padding: EdgeInsets.only(left: 20.sp, top: 20.sp, right: 20.sp),
         child: ListView(
           children: [
+            ListTile(
+              leading: Container(
+                padding: EdgeInsets.all(4.sp),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.black87),
+                child: Icon(
+                  Icons.dark_mode_rounded,
+                  color: Colors.white,
+                  size: 25.sp,
+                ),
+              ),
+              title: Text(
+                'Dark mode',
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 24.sp,
+                color: Color.fromRGBO(251, 127, 46, 1),
+              ),
+            ),
+            Divider(
+              color: Colors.grey.shade400,
+              thickness: 1.sp,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const About()));
+              },
+              child: ListTile(
+                leading: Container(
+                  padding: EdgeInsets.all(4.sp),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Color.fromRGBO(251, 127, 46, 1)),
+                  child: Icon(
+                    Icons.people,
+                    color: Colors.white,
+                    size: 25.sp,
+                  ),
+                ),
+                title: Text(
+                  'About ',
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 24.sp,
+                  color: Color.fromRGBO(251, 127, 46, 1),
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.grey.shade400,
+              thickness: 1.sp,
+            ),
             ListTile(
               leading: Container(
                 padding: EdgeInsets.all(4.sp),
