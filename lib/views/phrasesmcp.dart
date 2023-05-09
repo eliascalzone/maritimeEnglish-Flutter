@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'allwordslist.dart';
+import '../data/allwordslist.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Phrasesmcp extends StatefulWidget {
@@ -12,6 +12,7 @@ class Phrasesmcp extends StatefulWidget {
 class _PhrasesmcpState extends State<Phrasesmcp> {
   final List<Map<String, dynamic>> _allwords = List.from(allwords);
   List<Map<String, dynamic>> _foundwords = [];
+  
   @override
   void initState() {
     super.initState();

@@ -1,4 +1,4 @@
-//Word list of MSCP
+//Word list of SMCP
 const List<Map<String, dynamic>> allwords = [
   {
     'name': 'Abandon vessel',

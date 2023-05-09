@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/phrasesmcp.dart';
-import 'package:fluttermaritime/praticelisten.dart';
+import 'package:fluttermaritime/Views/phrasesmcp.dart';
+import 'package:fluttermaritime/Views/praticelisten.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Glossarypage extends StatelessWidget {

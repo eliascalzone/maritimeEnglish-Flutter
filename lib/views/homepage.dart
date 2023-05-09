@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/glossarypage.dart';
-import 'package:fluttermaritime/radiocompage.dart';
+import 'package:fluttermaritime/views/glossarypage.dart';
+import 'package:fluttermaritime/views/radiocompage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

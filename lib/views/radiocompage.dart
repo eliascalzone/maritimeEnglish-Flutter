@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/sentencesradio.dart';
+import 'package:fluttermaritime/Views/sentencesradio.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/theshipex.dart';
+import 'package:fluttermaritime/Views/theshipex.dart';
 
 class Radiocompage extends StatefulWidget {
   const Radiocompage({super.key});

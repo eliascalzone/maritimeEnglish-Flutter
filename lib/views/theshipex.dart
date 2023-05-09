@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/celebrate.dart';
-import 'package:fluttermaritime/theshipdata.dart';
+import 'package:fluttermaritime/Views/celebrate.dart';
+import 'package:fluttermaritime/data/theshipdata.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:fluttermaritime/radiocompage.dart';
+import 'package:fluttermaritime/Views/radiocompage.dart';
 
 class ShipExercise extends StatefulWidget {
   const ShipExercise({Key? key}) : super(key: key);

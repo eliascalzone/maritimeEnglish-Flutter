@@ -1,24 +1,18 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/homepage.dart';
-import 'package:fluttermaritime/settingspage.dart';
+import 'package:fluttermaritime/Controller.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+
+import 'model.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  Model model = Model();
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isDarkModeEnable = false;
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -31,7 +25,7 @@ class _MyAppState extends State<MyApp> {
                 appBarTheme: AppBarTheme(color: Color(0xFF253341)),
                 scaffoldBackgroundColor: Color(0xFF15202b),
               ),
-              themeMode: isDarkModeEnable ? ThemeMode.dark : ThemeMode.light,
+              themeMode: model.darkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 primarySwatch: const MaterialColor(
                   0xFF4C92DB,
@@ -96,62 +90,21 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
               ),
-              home: Stack(children: [
-                AnimatedSplashScreen(
-                  splash: Text('MARITIME ENGLISH',
-                      style: GoogleFonts.openSans(
-                          color: Colors.white,
-                          fontSize: 32.sp,
-                          fontWeight: FontWeight.bold)),
-                  nextScreen: RootPage(),
-                  backgroundColor: Color.fromRGBO(76, 146, 219, 1),
-                  duration: 4000,
-                ),
-              ]),
+              home: AnimatedSplashScreen(
+                splash: Text('MARITIME ENGLISH',
+                style: GoogleFonts.openSans(
+                  color: Colors.white,
+                  fontSize: 32.sp,
+                  fontWeight: FontWeight.bold)),
+                nextScreen: Controller(),
+                backgroundColor: Color.fromRGBO(76, 146, 219, 1),
+                duration: 4000,
+              ),
             );
           },
         );
       },
       designSize: const Size(430, 932),
-    );
-  }
-
-  void onStateChanged(bool isDarkModeEnable) {
-    setState(() {
-      this.isDarkModeEnable = isDarkModeEnable;
-    });
-  }
-}
-
-class RootPage extends StatefulWidget {
-  const RootPage({super.key});
-
-  @override
-  State<RootPage> createState() => _RootPageState();
-}
-
-class _RootPageState extends State<RootPage> {
-  int currentPage = 0;
-  List<Widget> pages = const [Homepage(), Settings()];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: pages[currentPage],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: 'Settings'),
-        ],
-        currentIndex: currentPage,
-        selectedItemColor: Color.fromRGBO(76, 146, 219, 1),
-        onTap: (int index) {
-          setState(() {
-            currentPage = index;
-          });
-        },
-      ),
     );
   }
 }

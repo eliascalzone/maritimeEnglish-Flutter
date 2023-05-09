@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/allwordslist.dart';
+import 'package:fluttermaritime/data/allwordslist.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
