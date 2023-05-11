@@ -4,6 +4,7 @@ import 'package:fluttermaritime/data/theshipdata.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttermaritime/Views/radiocompage.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class ShipExercise extends StatefulWidget {
   const ShipExercise({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class ShipExercise extends StatefulWidget {
 }
 
 class _ShipExerciseState extends State<ShipExercise> {
+  AudioCache audioCache = AudioCache();
   int score = 0;
   List<Map<String, List<ShipPart>>> shiplist = [];
   List<ShipPart> list1 = [
@@ -122,17 +124,29 @@ class _ShipExerciseState extends State<ShipExercise> {
 
   void goNextShip() {
     setState(() {
-      currentIndex++;
-      if (currentIndex == shiplist.length) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Celebrate()),
-            ((route) => route.isFirst));
-        restartGame();
-        setState(() {});
-      } else {
-        shuffledShipParts = shiplist[currentIndex].values.first.toList()
-          ..shuffle();
+      setState(() {
+        if (currentIndex == shiplist.length - 1) {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => Celebrate()),
+              ((route) => route.isFirst));
+          restartGame();
+          setState(() {});
+        } else {
+          currentIndex++;
+          shuffledShipParts = shiplist[currentIndex].values.first.toList()
+            ..shuffle();
+        }
+      });
+    });
+  }
+
+  int _progress = 1;
+
+  void incrementProgress() {
+    setState(() {
+      if (_progress < 11) {
+        _progress++;
       }
     });
   }
@@ -152,7 +166,7 @@ class _ShipExerciseState extends State<ShipExercise> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'The Ship',
+          'Match the words with the numbers',
           style: Theme.of(context).textTheme.headline3,
         ),
         centerTitle: true,
@@ -209,26 +223,63 @@ class _ShipExerciseState extends State<ShipExercise> {
           ),
           child: Column(
             children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Container(
+                  width: 300.w,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10.sp)),
+                    child: LinearProgressIndicator(
+                      backgroundColor: Color.fromRGBO(207, 207, 207, 1),
+                      color: Color.fromRGBO(75, 219, 78, 1),
+                      value: _progress / 11,
+                      minHeight: 15.h,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 12.w,
+                ),
+                Row(children: [
+                  Icon(
+                    Icons.favorite_rounded,
+                    color: Colors.red,
+                    size: 24.sp,
+                  ),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  Text(
+                    '11',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.sp),
+                  )
+                ]),
+              ]),
+              SizedBox(
+                height: 12.h,
+              ),
               Text.rich(TextSpan(children: [
                 TextSpan(
                     text: "Score: ",
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold)),
+                    style: Theme.of(context).textTheme.headline2),
                 TextSpan(
                     text: "$score" + " / 50",
                     style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 25.sp,
+                        color: Color.fromRGBO(75, 219, 78, 1),
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold))
               ])),
-              ListTile(
+              SizedBox(
+                height: 12.h,
+              ),
+              /*ListTile(
                   contentPadding: EdgeInsets.only(left: 30.sp),
                   title: Text(
                     'Match the words with the numbers',
                     style: Theme.of(context).textTheme.headline2,
-                  )),
+                  )),*/
               Container(
                 color: Colors.white,
                 height: 300.h,
@@ -307,6 +358,7 @@ class _ShipExerciseState extends State<ShipExercise> {
                                     if (shipname.shipPart ==
                                         receivedItem.shipPart) {
                                       setState(() {
+                                        audioCache.play('correct.wav');
                                         shuffledShipParts.remove(receivedItem);
                                         shiplist[currentIndex]
                                             .values
@@ -351,6 +403,7 @@ class _ShipExerciseState extends State<ShipExercise> {
               ElevatedButton(
                 onPressed: () {
                   goNextShip();
+                  incrementProgress();
                 },
                 style: ButtonStyle(
                     minimumSize:

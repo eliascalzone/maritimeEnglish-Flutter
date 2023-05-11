@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/settingspage.dart';
 
 class About extends StatelessWidget {
   const About({super.key});

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/allwordslist.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class Phrasesmcp extends StatefulWidget {
   const Phrasesmcp({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class Phrasesmcp extends StatefulWidget {
 class _PhrasesmcpState extends State<Phrasesmcp> {
   final List<Map<String, dynamic>> _allwords = List.from(allwords);
   List<Map<String, dynamic>> _foundwords = [];
-  
+  final FlutterTts flutterTts = FlutterTts();
+
   @override
   void initState() {
     super.initState();
@@ -74,9 +76,29 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
                             margin: const EdgeInsets.symmetric(vertical: 6),
                             elevation: 1,
                             child: ListTile(
-                              title: Text(
-                                _foundwords[index]['name'],
-                                style: Theme.of(context).textTheme.subtitle1,
+                              title: Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () async {
+                                        await flutterTts.setLanguage("en-US");
+                                        await flutterTts.setSpeechRate(0.5);
+                                        await flutterTts.setVolume(1.0);
+                                        await flutterTts.setPitch(1);
+                                        await flutterTts
+                                            .speak(_foundwords[index]['name']);
+                                      },
+                                      icon: Icon(
+                                        Icons.volume_up_rounded,
+                                        color:
+                                            Color.fromRGBO(76, 146, 219, 1.0),
+                                        size: 24.sp,
+                                      )),
+                                  Text(
+                                    _foundwords[index]['name'],
+                                    style:
+                                        Theme.of(context).textTheme.subtitle1,
+                                  ),
+                                ],
                               ),
                               subtitle: Text(
                                 _foundwords[index]['mean'],

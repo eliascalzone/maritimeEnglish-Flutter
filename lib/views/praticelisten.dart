@@ -5,6 +5,7 @@ import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class Practicelisten extends StatefulWidget {
   const Practicelisten({super.key});
@@ -18,6 +19,7 @@ class _PracticelistenState extends State<Practicelisten> {
   bool isRecorderReady = false;
   final audioPlayer = AudioPlayer();
   String? latestFile;
+  final FlutterTts flutterTts = FlutterTts();
 
   Future record() async {
     if (!isRecorderReady) {
@@ -197,13 +199,23 @@ class _PracticelistenState extends State<Practicelisten> {
                             width: 40.sp,
                             height: 40.sp,
                             child: IconButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await flutterTts.setLanguage("en-US");
+                                  await flutterTts.setSpeechRate(0.5);
+                                  await flutterTts.setVolume(1.0);
+                                  await flutterTts.setPitch(1);
+                                  await flutterTts
+                                      .speak(_list[currentIndex]['name']);
+                                },
                                 icon: Icon(
                                   Icons.volume_up_rounded,
                                   size: 30.sp,
                                   color:
                                       const Color.fromRGBO(76, 146, 219, 1.0),
                                 )),
+                          ),
+                          SizedBox(
+                            width: 6.w,
                           ),
                           Expanded(
                             child: Text(

@@ -85,9 +85,10 @@ class _RadiosentencesState extends State<Radiosentences> {
                                   await flutterTts
                                       .speak(_foundsentences[index]['data']);
                                 },
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.volume_up_rounded,
                                   color: Color.fromRGBO(76, 146, 219, 1.0),
+                                  size: 24.sp,
                                 ),
                               ),
                               title: Text(
