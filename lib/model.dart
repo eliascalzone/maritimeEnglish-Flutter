@@ -4,12 +4,11 @@ import 'views/settingspage.dart';
 import '../data/allwordslist.dart';
 
 class Model {
-
   bool isDarkModeEnable = false;
 
   bool get darkMode => isDarkModeEnable;
 
-  void enableDarkMode(bool dm){
+  void enableDarkMode(bool dm) {
     isDarkModeEnable = dm;
   }
 
@@ -19,8 +18,7 @@ class Model {
 
   int get currentPage => _currentPage;
 
-  void changePage(int newPage){
+  void changePage(int newPage) {
     _currentPage = newPage;
   }
-
 }

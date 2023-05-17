@@ -28,7 +28,7 @@ class _RadiosentencesState extends State<Radiosentences> {
     } else {
       results = _all_sentences
           .where((element) =>
-              element['topic'].toLowerCase().contains(key.toLowerCase()))
+              element['topic'].toLowerCase().startsWith(key.toLowerCase()))
           .toList();
     }
     setState(() {

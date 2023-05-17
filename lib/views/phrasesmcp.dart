@@ -28,7 +28,7 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
     } else {
       results = _allwords
           .where((element) =>
-              element['name'].toLowerCase().contains(key.toLowerCase()))
+              element['name'].toLowerCase().startsWith(key.toLowerCase()))
           .toList();
     }
     setState(() {
