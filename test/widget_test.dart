@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttermaritime/model.dart';
-import 'package:fluttermaritime/navigationcontroller.dart';
+import 'package:fluttermaritime/controllers/navigationcontroller.dart';
 
 void main() {
   Model model = Model();

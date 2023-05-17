@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttermaritime/views/phrasesmcp.dart';
 
 import '../model.dart';
@@ -24,9 +25,19 @@ class _PhrasesControllerState extends State<PhrasesController> {
       widget.model.filterPhrases(key);
     });
   }
+
+  final FlutterTts flutterTts = FlutterTts();
+
+  void speakTts(String word) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setVolume(1.0);
+    await flutterTts.setPitch(1);
+    await flutterTts.speak(word);
+  }
   
   @override
   Widget build(BuildContext context) {
-    return Phrasesmcp(model: widget.model, filter: filter);
+    return Phrasesmcp(model: widget.model, filter: filter, speakTts: speakTts,);
   }
 }

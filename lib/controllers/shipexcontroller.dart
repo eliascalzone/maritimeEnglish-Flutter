@@ -28,6 +28,7 @@ class _ShipExControllerState extends State<ShipExController> {
         setState(() {
           widget.model.incrementIndex();
           widget.model.shuffleWithCurrentIndex();
+          widget.model.incrementProgress();
         });
       }
   }

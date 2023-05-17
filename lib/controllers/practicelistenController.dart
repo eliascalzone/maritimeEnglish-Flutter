@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttermaritime/model.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -81,12 +82,23 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
     });
   }
 
+  final FlutterTts flutterTts = FlutterTts();
+
+  void speakTts(String word) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setVolume(1.0);
+    await flutterTts.setPitch(1);
+    await flutterTts.speak(word);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Practicelisten(
         model: widget.model,
         setIndex: setIndex,
         playLatestFile: playLatestFile,
-        record: startStopRecord);
+        record: startStopRecord,
+        speakTts: speakTts);
   }
 }

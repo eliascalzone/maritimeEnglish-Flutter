@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/navigationcontroller.dart';
+import 'package:fluttermaritime/controllers/navigationcontroller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'model.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               darkTheme: ThemeData.dark().copyWith(
                 appBarTheme: AppBarTheme(color: Color(0xFF253341)),
-                scaffoldBackgroundColor: Color(0xFF15202b),
+                scaffoldBackgroundColor: Color(0xFF253341),
                 textTheme: GoogleFonts.openSansTextTheme()
                     .apply(
                       bodyColor: Colors.white,
@@ -36,17 +36,17 @@ class MyApp extends StatelessWidget {
                       headline1: GoogleFonts.openSans(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       headline2: GoogleFonts.openSans(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       headline3: GoogleFonts.openSans(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                       headline4: GoogleFonts.openSans(
                         fontSize: 18.sp,
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
                       headline5: GoogleFonts.openSans(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.normal,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                       subtitle1: GoogleFonts.openSans(
                         fontSize: 16.sp,
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
                       bodyText1: GoogleFonts.openSans(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.normal,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                       bodyText2: GoogleFonts.openSans(
                         fontSize: 16.sp,

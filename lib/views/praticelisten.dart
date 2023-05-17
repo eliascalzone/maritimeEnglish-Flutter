@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import '../model.dart';
 
@@ -9,12 +8,13 @@ class Practicelisten extends StatelessWidget {
   final void Function(int) setIndex;
   final void Function() playLatestFile;
   final void Function() record;
+  final void Function(String) speakTts;
 
   const Practicelisten(
       {super.key, required this.model,
       required this.setIndex,
       required this.playLatestFile,
-      required this.record});
+      required this.record, required this.speakTts});
 
   static const indexArr = [
     0,
@@ -142,7 +142,7 @@ class Practicelisten extends StatelessWidget {
                             height: 40.sp,
                             child: IconButton(
                                 onPressed: () {
-                                  //speakTts();
+                                  speakTts(model.allwords[model.listenIndex]['name']!);
                                 },
                                 icon: Icon(
                                   Icons.volume_up_rounded,

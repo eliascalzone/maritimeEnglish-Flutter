@@ -78,7 +78,7 @@ class ShipExercise extends StatelessWidget {
                     child: LinearProgressIndicator(
                       backgroundColor: Color.fromRGBO(207, 207, 207, 1),
                       color: Color.fromRGBO(75, 219, 78, 1),
-                      value: 1/*model.progress*/ / 11,
+                      value: model.progress / 11,
                       minHeight: 15.h,
                     ),
                   ),
@@ -96,7 +96,7 @@ class ShipExercise extends StatelessWidget {
                     width: 2.w,
                   ),
                   Text(
-                    '11',
+                    '${11 - model.progress}',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
@@ -121,12 +121,6 @@ class ShipExercise extends StatelessWidget {
               SizedBox(
                 height: 12.h,
               ),
-              /*ListTile(
-                  contentPadding: EdgeInsets.only(left: 30.sp),
-                  title: Text(
-                    'Match the words with the numbers',
-                    style: Theme.of(context).textTheme.headline2,
-                  )),*/
               Container(
                 color: Colors.white,
                 height: 300.h,
@@ -225,7 +219,6 @@ class ShipExercise extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   nextShip(context);
-                  //incrementProgress
                 },
                 style: ButtonStyle(
                     minimumSize:

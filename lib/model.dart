@@ -33,6 +33,14 @@ class Model {
   }
 
   //Ship Exercise
+  int _progress = 0;
+
+  int get progress => _progress;
+
+  void incrementProgress(){
+    _progress++;
+  }
+
   int _score = 0;
 
   int get score => _score;
@@ -166,6 +174,7 @@ class Model {
   }
 
   void initGame() {
+    _progress = 0;
     _score = 0;
     resetLists();
     _shiplist.clear();

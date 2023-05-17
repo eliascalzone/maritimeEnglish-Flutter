@@ -5,7 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Phrasesmcp extends StatelessWidget {
   final Model model;
   final void Function(String) filter;
-  const Phrasesmcp({super.key, required this.model, required this.filter});
+  final void Function(String) speakTts;
+
+  const Phrasesmcp(
+      {super.key,
+      required this.model,
+      required this.filter,
+      required this.speakTts});
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +53,20 @@ class Phrasesmcp extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(vertical: 6),
                             elevation: 1,
                             child: ListTile(
-                              title: Text(
-                                model.foundwords[index]['name'],
-                                style: Theme.of(context).textTheme.subtitle1,
+                              title: Row(
+                                children: [
+                                  Text(
+                                    model.foundwords[index]['name'],
+                                    style:
+                                        Theme.of(context).textTheme.subtitle1,
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        speakTts(
+                                            model.foundwords[index]['name']);
+                                      },
+                                      icon: const Icon(Icons.volume_up_rounded, color: Color.fromRGBO(76, 146, 219, 1.0)))
+                                ],
                               ),
                               subtitle: Text(
                                 model.foundwords[index]['mean'],
