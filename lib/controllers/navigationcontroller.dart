@@ -17,43 +17,72 @@ class NavigationController extends StatefulWidget {
 }
 
 class _NavigationControllerState extends State<NavigationController> {
-
   void changeScreen(int newScreen) {
     setState(() {
       widget.model.changeScreen(newScreen);
     });
   }
 
-  void goToStandardCom(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Glossarypage(model: widget.model, goToPhrases: goToPhrases, goToPracticeListen: goToPracticeListen)));
+  void goToStandardCom(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Glossarypage(
+                model: widget.model,
+                goToPhrases: goToPhrases,
+                goToPracticeListen: goToPracticeListen)));
   }
 
-  void goToRadioCom(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Radiocompage(model: widget.model, goToRadioSentences: goToRadioSentences, goToShipEx: goToShipEx)));
+  void goToRadioCom(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Radiocompage(
+                  model: widget.model,
+                  goToRadioSentences: goToRadioSentences,
+                  goToShipEx: goToShipEx,
+                )));
   }
 
-  void goToPhrases(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PhrasesController(model: widget.model)));
+  void goToPhrases(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PhrasesController(model: widget.model)));
   }
 
-  void goToPracticeListen(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PracticelistenController(model: widget.model)));
+  void goToPracticeListen(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                PracticelistenController(model: widget.model)));
   }
 
-  void goToRadioSentences(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SentencesController(model: widget.model)));
+  void goToRadioSentences(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SentencesController(model: widget.model)));
   }
 
-  void goToShipEx(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ShipExController(model: widget.model)));
+  void goToShipEx(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ShipExController(model: widget.model)));
   }
 
-  void goBack(BuildContext context){
+  void goBack(BuildContext context) {
     Navigator.popUntil(context, (route) => route.isFirst);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Homepage(model: widget.model, goToStandardCom: goToStandardCom, goToRadioCom: goToRadioCom, changeScreen: changeScreen);
+    return Homepage(
+        model: widget.model,
+        goToStandardCom: goToStandardCom,
+        goToRadioCom: goToRadioCom,
+        changeScreen: changeScreen);
   }
 }

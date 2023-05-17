@@ -8,7 +8,11 @@ class Radiocompage extends StatelessWidget {
   final void Function(BuildContext) goToRadioSentences;
   final void Function(BuildContext) goToShipEx;
 
-  const Radiocompage({super.key, required this.model, required this.goToRadioSentences, required this.goToShipEx});
+  const Radiocompage(
+      {super.key,
+      required this.model,
+      required this.goToRadioSentences,
+      required this.goToShipEx});
 
   @override
   Widget build(BuildContext context) {
