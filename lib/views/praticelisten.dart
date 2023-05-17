@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 import '../model.dart';
 
@@ -140,13 +141,18 @@ class Practicelisten extends StatelessWidget {
                             width: 40.sp,
                             height: 40.sp,
                             child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  //speakTts();
+                                },
                                 icon: Icon(
                                   Icons.volume_up_rounded,
                                   size: 30.sp,
                                   color:
                                       const Color.fromRGBO(76, 146, 219, 1.0),
                                 )),
+                          ),
+                          SizedBox(
+                            width: 6.w,
                           ),
                           Expanded(
                             child: Text(

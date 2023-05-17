@@ -41,7 +41,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'Blind sector',
     'mean':
-        'An area which cannot be scanned by the ship’s radar because it is shielded by parts of the superstructure, masts, etc'
+        "An area which cannot be scanned by the ship's radar because it is shielded by parts of the superstructure, masts, etc"
   },
   {
     'name': 'Boarding arrangements ',
@@ -89,7 +89,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'Close up (to)',
     'mean':
-        'To decrease the distance to the vessel ahead by increasing one’s own speed'
+        "To decrease the distance to the vessel ahead by increasing one's own speed"
   },
   {
     'name': 'Compatibility (of goods)',
@@ -174,7 +174,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'Drop back (to) ',
     'mean':
-        'To increase the distance from the vessel ahead by reducing one´s own speed'
+        "To increase the distance from the vessel ahead by reducing one's own speed"
   },
   {'name': 'DSC', 'mean': 'Digital Selective Calling (in the GMDSS system)'},
   {'name': 'Embark (to)', 'mean': 'To go aboard a vessel'},
@@ -223,7 +223,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'General emergency alarm',
     'mean':
-        'A sound signal of seven short blasts and one prolonged blast given with the vessel´s sound system'
+        "A sound signal of seven short blasts and one prolonged blast given with the vessel's sound system"
   },
   {'name': 'Give way', 'mean': 'To keep out of the way of another vessel'},
   {'name': 'GMDSS', 'mean': 'Global Maritime Distress and Safety System'},
@@ -249,7 +249,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'Heading',
     'mean':
-        'The horizontal direction of the vessel´s bows at a given moment measured in degrees clockwise from north'
+        "The horizontal direction of the vessel's bows at a given moment measured in degrees clockwise from north"
   },
   {
     'name': 'Hoist',
@@ -294,7 +294,7 @@ const List<Map<String, String>> allWordsList = [
   },
   {
     'name': 'Leeway',
-    'mean': 'Vessel’s sideways drift leeward of the desired course'
+    'mean': "Vessel's sideways drift leeward of the desired course"
   },
   {
     'name': 'Let go (to)',
@@ -389,7 +389,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'PA-system',
     'mean':
-        'Public address system: loudspeakers in the vessel´s cabins, mess rooms, etc., and on deck through which important information can be broadcast from a central point, mostly from the navigation bridge'
+        "Public address system: loudspeakers in the vessel's cabins, mess rooms, etc., and on deck through which important information can be broadcast from a central point, mostly from the navigation bridge"
   },
   {'name': 'Recover (to)', 'mean': 'To pick up shipwrecked persons'},
   {
@@ -513,7 +513,7 @@ const List<Map<String, String>> allWordsList = [
     'name': 'Station',
     'mean': 'The allotted place or the duties of each person on board'
   },
-  {'name': 'Stripping', 'mean': 'Final pumping of tank’s residues'},
+  {'name': 'Stripping', 'mean': "Final pumping of tank's residues"},
   {
     'name': 'Survivor',
     'mean':
@@ -521,7 +521,7 @@ const List<Map<String, String>> allWordsList = [
   },
   {
     'name': 'Take off (to)',
-    'mean': 'To lift off from a vessel´s deck (helicopter)'
+    'mean': "To lift off from a vessel's deck (helicopter)"
   },
   {
     'name': 'Target',
@@ -561,7 +561,7 @@ const List<Map<String, String>> allWordsList = [
   {
     'name': 'Union purchase',
     'mean':
-        'A method of cargo handling by combining two derricks, one of which is fixed over the hatch, the other over the ship’s side'
+        "A method of cargo handling by combining two derricks, one of which is fixed over the hatch, the other over the ship's side"
   },
   {
     'name': 'Unlit',
@@ -659,7 +659,7 @@ const List<Map<String, dynamic>> all_sentences = [
   {'topic': 'anchoring', 'data': 'You must heave up your anchor'},
   {
     'topic': 'anchoring',
-    'data': 'Vessel "Pole Star” is at anchor in position 55°32´N-011°14´E'
+    'data': "Vessel 'Pole Star' is at anchor in position 55°32'N - 011°14'E"
   },
   //Topic Manoeuvring
   {'topic': 'manoeuvring', 'data': 'I am going astern'},
@@ -679,7 +679,7 @@ const List<Map<String, dynamic>> all_sentences = [
     'topic': 'position/speed',
     'data': 'Say again your position for identification'
   },
-  {'topic': 'position/speed', 'data': 'My position is 39°42´N, 024°15´ W'},
+  {'topic': 'position/speed', 'data': "My position is 39°42'N, 024°15'W"},
   {
     'topic': 'position/speed',
     'data': 'What is the course to reach you? What is your present speed?'
@@ -734,7 +734,7 @@ const List<Map<String, dynamic>> all_sentences = [
   },
   {
     'topic': 'routering',
-    'data': 'There is a hampered vessel in position 59°39´ N, 010°22´ E'
+    'data': "There is a hampered vessel in position 59°39' N, 010°22' E"
   },
   //Topic Fishing
   {'topic': 'fishing', 'data': 'Navigate with caution'},

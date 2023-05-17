@@ -55,9 +55,10 @@ class Radiosentences extends StatelessWidget {
                                 onPressed: () {
                                       speakTts(model.foundSentences[index]['data']);
                                 },
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.volume_up_rounded,
                                   color: Color.fromRGBO(76, 146, 219, 1.0),
+                                  size: 24.sp,
                                 ),
                               ),
                               title: Text(
