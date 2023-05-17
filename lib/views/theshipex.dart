@@ -1,151 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/Views/celebrate.dart';
-import 'package:fluttermaritime/data/theshipdata.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:fluttermaritime/Views/radiocompage.dart';
 
-class ShipExercise extends StatefulWidget {
-  const ShipExercise({Key? key}) : super(key: key);
+import '../model.dart';
 
-  @override
-  State<ShipExercise> createState() => _ShipExerciseState();
-}
+class ShipExercise extends StatelessWidget {
+  final Model model;
+  final void Function(BuildContext) goBack;
+  final void Function(ShipPart, ShipPart) onAccept;
+  final void Function(BuildContext) nextShip;
+  final void Function(String) speakTts;
 
-class _ShipExerciseState extends State<ShipExercise> {
-  int score = 0;
-  List<Map<String, List<ShipPart>>> shiplist = [];
-  List<ShipPart> list1 = [
-    ShipPart('radar scanner', '1'),
-    ShipPart('radio antenna', '2'),
-    ShipPart('the navigation bridge', '3'),
-    ShipPart('rescue boat', '4'),
-    ShipPart('the superstructure', '5'),
-  ];
-  List<ShipPart> list2 = [
-    ShipPart('crane', '6'),
-    ShipPart('mooring winch', '7'),
-    ShipPart('the hull', '8'),
-    ShipPart('the windlass', '9'),
-    ShipPart('hatch cover', '10'),
-  ];
-  List<ShipPart> list3 = [
-    ShipPart('the poop deck', '11'),
-    ShipPart('funnels', '12'),
-    ShipPart('the main deck', '13'),
-    ShipPart('tween deck', '14'),
-  ];
-  List<ShipPart> list4 = [
-    ShipPart('hold', '15'),
-    ShipPart('bottom', '16'),
-    ShipPart('bulkhead', '17'),
-    ShipPart('engine room', '18'),
-    ShipPart('ladder', '19'),
-  ];
-
-  List<ShipPart> list5 = [
-    ShipPart('forward', '1'),
-    ShipPart('aft', '2'),
-    ShipPart('breadth', '3'),
-    ShipPart('abeam', '4'),
-    ShipPart('midships', '5'),
-  ];
-  List<ShipPart> list6 = [
-    ShipPart('centre line', '6'),
-    ShipPart('starboard bow', '7'),
-    ShipPart('STARBOARD', '8'),
-    ShipPart('starboard quarter', '9'),
-  ];
-  List<ShipPart> list7 = [
-    ShipPart('port quater', '10'),
-    ShipPart('PORT', '11'),
-    ShipPart('port bow', '12'),
-    ShipPart('ahead', '13'),
-    ShipPart('astern', '14'),
-  ];
-  List<ShipPart> list8 = [
-    ShipPart('stern line', '15'),
-    ShipPart('aft breast line', '16'),
-    ShipPart('bow', '17'),
-    ShipPart('ahead', '18'),
-    ShipPart('forecastle', '19'),
-  ];
-
-  List<ShipPart> list9 = [
-    ShipPart('under-keel\nclearance', '1'),
-    ShipPart('freeboard', '2'),
-    ShipPart('air draft', '3'),
-    ShipPart('draft', '4'),
-  ];
-
-  List<ShipPart> list10 = [
-    ShipPart('forward spring', '5'),
-    ShipPart('breast line', '6'),
-    ShipPart('head line', '7'),
-    ShipPart('buoy line', '8'),
-  ];
-  List<ShipPart> list11 = [
-    ShipPart('fairlead', '9'),
-    ShipPart('centre lead', '10'),
-    ShipPart('roller fairlead', '11'),
-    ShipPart('capstan', '12'),
-  ];
-
-  final FlutterTts flutterTts = FlutterTts();
-  List<ShipPart> shuffledShipParts = [];
-  int currentIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    initGame();
-  }
-
-  initGame() {
-    score = 0;
-    shiplist = [
-      {'images/pic1.png': list1},
-      {'images/pic2.png': list2},
-      {'images/pic3.png': list3},
-      {'images/pic4.png': list4},
-      {'images/pic5.png': list5},
-      {'images/pic6.png': list6},
-      {'images/pic7.png': list7},
-      {'images/pic8.png': list8},
-      {'images/pic9.png': list9},
-      {'images/pic10.png': list10},
-      {'images/pic11.png': list11},
-    ];
-    // Shuffle the list of draggable items once when the state is initialized
-    shuffledShipParts = shiplist[currentIndex].values.first.toList()..shuffle();
-  }
-
-  void goNextShip() {
-    setState(() {
-      currentIndex++;
-      if (currentIndex == shiplist.length) {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Celebrate()),
-            ((route) => route.isFirst));
-        restartGame();
-        setState(() {});
-      } else {
-        shuffledShipParts = shiplist[currentIndex].values.first.toList()
-          ..shuffle();
-      }
-    });
-  }
-
-  void restartGame() {
-    setState(() {
-      shiplist.clear();
-      shiplist.addAll(List.from(shipList));
-      currentIndex = 0;
-      shuffledShipParts = shiplist[currentIndex].values.first.toList()
-        ..shuffle();
-    });
-  }
+  const ShipExercise({super.key, required this.model, required this.goBack, required this.onAccept, required this.nextShip, required this.speakTts});
 
   @override
   Widget build(BuildContext context) {
@@ -181,11 +46,7 @@ class _ShipExerciseState extends State<ShipExercise> {
                           )),
                       TextButton(
                           onPressed: () {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Radiocompage()),
-                                (route) => route.isFirst);
+                            goBack(context);
                           },
                           child: Text(
                             'YES',
@@ -217,7 +78,7 @@ class _ShipExerciseState extends State<ShipExercise> {
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold)),
                 TextSpan(
-                    text: "$score" + " / 50",
+                    text: "${model.score} / 50",
                     style: TextStyle(
                         color: Colors.green,
                         fontSize: 25.sp,
@@ -237,7 +98,7 @@ class _ShipExerciseState extends State<ShipExercise> {
                   padding: EdgeInsets.only(
                       left: 20.sp, right: 20.sp, top: 20.sp, bottom: 20.sp),
                   child: Image.asset(
-                    shiplist[currentIndex].keys.first,
+                    model.pictures[model.currentIndex],
                   ),
                 ),
               ),
@@ -248,8 +109,7 @@ class _ShipExerciseState extends State<ShipExercise> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children:
-                      //(shiplist[currentIndex].values.first.toList()..shuffle())
-                      shuffledShipParts
+                      model.shuffledShipParts
                           .map((shipname) => Padding(
                                 padding: EdgeInsets.symmetric(vertical: 4.sp),
                                 child: Draggable<ShipPart>(
@@ -270,12 +130,8 @@ class _ShipExerciseState extends State<ShipExercise> {
                                               ),
                                             ))),
                                     childWhenDragging: Container(),
-                                    onDragStarted: () async {
-                                      await flutterTts.setLanguage("en-US");
-                                      await flutterTts.setSpeechRate(0.5);
-                                      await flutterTts.setVolume(1.0);
-                                      await flutterTts.setPitch(1);
-                                      await flutterTts.speak(shipname.shipPart);
+                                    onDragStarted: () {
+                                      speakTts(shipname.shipPart);
                                     },
                                     child: Card(
                                         shape: RoundedRectangleBorder(
@@ -296,51 +152,32 @@ class _ShipExerciseState extends State<ShipExercise> {
                           .toList(),
                 ),
                 Column(
-                  children: shiplist[currentIndex]
-                      .values
-                      .first
+                  children: model.shiplist[model.currentIndex]
                       .map((shipname) => Padding(
                             padding: EdgeInsets.symmetric(vertical: 4.sp),
                             child: DragTarget<ShipPart>(
                                 onAccept: (receivedItem) {
-                                  setState(() {
-                                    if (shipname.shipPart ==
-                                        receivedItem.shipPart) {
-                                      setState(() {
-                                        shuffledShipParts.remove(receivedItem);
-                                        shiplist[currentIndex]
-                                            .values
-                                            .first
-                                            .remove(receivedItem);
-                                        score += 1;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        score -= 1;
-                                      });
-                                    }
-                                  });
+                                  onAccept(receivedItem, shipname);
                                 },
                                 onWillAccept: (receivedItem) => true,
                                 builder: (context, acceptData, rejectedData) =>
-                                    Container(
-                                        child: Card(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10.r)),
-                                            elevation: 4,
-                                            child: Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    30.sp, 10.sp, 30.sp, 10.sp),
-                                                child: Center(
-                                                  child: Text(
-                                                    shipname.id,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyText1,
-                                                  ),
-                                                ))))),
+                                    Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(
+                                                    10.r)),
+                                        elevation: 4,
+                                        child: Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                30.sp, 10.sp, 30.sp, 10.sp),
+                                            child: Center(
+                                              child: Text(
+                                                shipname.id,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyText1,
+                                              ),
+                                            )))),
                           ))
                       .toList(),
                 ),
@@ -350,7 +187,7 @@ class _ShipExerciseState extends State<ShipExercise> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  goNextShip();
+                  nextShip(context);
                 },
                 style: ButtonStyle(
                     minimumSize:

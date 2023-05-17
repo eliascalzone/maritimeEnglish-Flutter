@@ -1,73 +1,19 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/data/allwordslist.dart';
-import 'package:flutter_sound/flutter_sound.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Practicelisten extends StatefulWidget {
-  const Practicelisten({super.key});
+import '../model.dart';
 
-  @override
-  State<Practicelisten> createState() => _PracticelistenState();
-}
+class Practicelisten extends StatelessWidget {
+  final Model model;
+  final void Function(int) setIndex;
+  final void Function() playLatestFile;
+  final void Function() record;
 
-class _PracticelistenState extends State<Practicelisten> {
-  final recorder = FlutterSoundRecorder();
-  bool isRecorderReady = false;
-  final audioPlayer = AudioPlayer();
-  String? latestFile;
-
-  Future record() async {
-    if (!isRecorderReady) {
-      return;
-    }
-
-    await recorder.startRecorder(toFile: 'audio');
-  }
-
-  Future stop() async {
-    if (!isRecorderReady) {
-      return;
-    }
-
-    final path = await recorder.stopRecorder();
-    latestFile = path!;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    initRecorder();
-  }
-
-  @override
-  void dispose() {
-    recorder.closeRecorder();
-
-    super.dispose();
-  }
-
-  Future initRecorder() async {
-    final status = await Permission.microphone.request();
-
-    if (status != PermissionStatus.granted) {
-      throw 'Microphone permission not granted';
-    }
-
-    await recorder.openRecorder();
-    isRecorderReady = true;
-  }
-
-  final List<Map<String, dynamic>> _list = List.from(allwords);
-  int currentIndex = 0;
-  var textstyle_alphabet = TextStyle(
-    color: const Color.fromRGBO(76, 146, 219, 1.0),
-    fontSize: 18.sp,
-    fontWeight: FontWeight.bold,
-  );
+  const Practicelisten(
+      {super.key, required this.model,
+      required this.setIndex,
+      required this.playLatestFile,
+      required this.record});
 
   static const indexArr = [
     0,
@@ -117,27 +63,25 @@ class _PracticelistenState extends State<Practicelisten> {
     'W'
   ];
 
-  Color letterColor(int index) {
-    if (currentIndex >= indexArr[index] && currentIndex < indexArr[index + 1]) {
-      return const Color.fromARGB(30, 33, 149, 243);
-    } else {
-      return const Color.fromARGB(0, 33, 149, 243);
-    }
-  }
-
   List<Widget> upperButtons() {
     List<Widget> list = [];
     for (int i = 0; i < 21; i++) {
       list.add(TextButton(
         onPressed: () {
-          setState(() {
-            currentIndex = indexArr[i];
-          });
+          setIndex(indexArr[i]);
         },
-        style: TextButton.styleFrom(backgroundColor: letterColor(i)),
+        style: TextButton.styleFrom(
+            backgroundColor:
+                (model.allwords[model.listenIndex]['name']![0] == letterArr[i])
+                    ? const Color.fromARGB(30, 33, 149, 243)
+                    : const Color.fromARGB(0, 33, 149, 243)),
         child: Text(
           letterArr[i],
-          style: textstyle_alphabet,
+          style: TextStyle(
+            color: const Color.fromRGBO(76, 146, 219, 1.0),
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ));
     }
@@ -183,7 +127,6 @@ class _PracticelistenState extends State<Practicelisten> {
                 ],
                 color: Colors.white),
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   flex: 4,
@@ -207,7 +150,7 @@ class _PracticelistenState extends State<Practicelisten> {
                           ),
                           Expanded(
                             child: Text(
-                              _list[currentIndex]['name'],
+                              model.allwords[model.listenIndex]['name']!,
                               style: Theme.of(context).textTheme.headline2,
                             ),
                           )
@@ -227,7 +170,7 @@ class _PracticelistenState extends State<Practicelisten> {
                         height: 8.sp,
                       ),
                       Text(
-                        _list[currentIndex]['mean'],
+                        model.allwords[model.listenIndex]['mean']!,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(
@@ -241,8 +184,8 @@ class _PracticelistenState extends State<Practicelisten> {
                 Container(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
-                        onPressed: () async {
-                          await audioPlayer.play(latestFile!, isLocal: true);
+                        onPressed: () {
+                          playLatestFile();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
@@ -258,13 +201,11 @@ class _PracticelistenState extends State<Practicelisten> {
                     /* Previous Button */
                     OutlinedButton(
                       onPressed: () {
-                        setState(() {
-                          if (currentIndex == 0) {
-                            currentIndex = _list.length - 1;
-                          } else {
-                            currentIndex--;
-                          }
-                        });
+                        if (model.listenIndex == 0) {
+                          setIndex(model.allwords.length - 1);
+                        } else {
+                          setIndex(model.listenIndex - 1);
+                        }
                       },
                       style: OutlinedButton.styleFrom(
                         shape: const CircleBorder(),
@@ -278,32 +219,25 @@ class _PracticelistenState extends State<Practicelisten> {
 
                     /* Record Button */
                     ElevatedButton(
-                        onPressed: () async {
-                          if (recorder.isRecording) {
-                            await stop();
-                          } else {
-                            await record();
-                          }
-                          setState(() {});
+                        onPressed: () {
+                          record();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
                           padding: EdgeInsets.all(10.sp),
                         ),
                         child: Icon(
-                          recorder.isRecording ? Icons.stop : Icons.mic,
+                          model.isRecording ? Icons.stop : Icons.mic,
                           size: 50.sp,
                         )),
 
                     /* Next Button */
                     OutlinedButton(
                       onPressed: () {
-                        setState(() {
-                          currentIndex++;
-                          if (currentIndex >= _list.length) {
-                            currentIndex = 0;
-                          }
-                        });
+                        setIndex(model.listenIndex + 1);
+                        if (model.listenIndex >= model.allwords.length) {
+                          setIndex(0);
+                        }
                       },
                       style: OutlinedButton.styleFrom(
                         shape: const CircleBorder(),

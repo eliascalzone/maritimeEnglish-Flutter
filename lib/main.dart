@@ -1,17 +1,20 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/Controller.dart';
+import 'package:fluttermaritime/navigationcontroller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'model.dart';
 
 void main() {
-  runApp(MyApp());
+  Model model = Model();
+  runApp(MyApp(model: model));
 }
 
 class MyApp extends StatelessWidget {
-  Model model = Model();
+  final Model model;
+
+  const MyApp({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,53 @@ class MyApp extends StatelessWidget {
               darkTheme: ThemeData.dark().copyWith(
                 appBarTheme: AppBarTheme(color: Color(0xFF253341)),
                 scaffoldBackgroundColor: Color(0xFF15202b),
+                textTheme: GoogleFonts.openSansTextTheme()
+                    .apply(
+                      bodyColor: Colors.white,
+                      displayColor: Colors.white,
+                    )
+                    .copyWith(
+                      headline1: GoogleFonts.openSans(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      headline2: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      headline3: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                      headline4: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(76, 146, 219, 1.0),
+                      ),
+                      headline5: GoogleFonts.openSans(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black,
+                      ),
+                      subtitle1: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      bodyText1: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.white,
+                      ),
+                      bodyText2: GoogleFonts.openSans(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.normal,
+                        color: Color.fromRGBO(76, 146, 219, 1.0),
+                      ),
+                    ),
               ),
               themeMode: model.darkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
@@ -96,7 +146,7 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 32.sp,
                   fontWeight: FontWeight.bold)),
-                nextScreen: Controller(),
+                nextScreen: NavigationController(model: model),
                 backgroundColor: Color.fromRGBO(76, 146, 219, 1),
                 duration: 4000,
               ),

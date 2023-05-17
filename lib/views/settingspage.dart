@@ -1,26 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/about.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttermaritime/model.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class Settings extends StatelessWidget {
+  final Model model;
+  final void Function() launchUrl;
+  final void Function(BuildContext) goToAbout;
+  final void Function(bool) enableDarkMode;
 
-  @override
-  State<Settings> createState() => _SettingsState();
-}
-
-class _SettingsState extends State<Settings> {
-  _launchURL() async {
-    const url =
-        'https://www.imo.org/en/OurWork/Safety/Pages/StandardMarineCommunicationPhrases.aspx';
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  const Settings(
+      {super.key, required this.model,
+      required this.launchUrl,
+      required this.goToAbout,
+      required this.enableDarkMode});
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +43,12 @@ class _SettingsState extends State<Settings> {
                 'Dark mode',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              trailing: Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 24.sp,
-                color: Color.fromRGBO(251, 127, 46, 1),
+              trailing: Switch(
+                value: model.darkMode,
+                activeColor: Colors.blue,
+                onChanged: (value) {
+                  enableDarkMode(value);
+                }
               ),
             ),
             Divider(
@@ -63,8 +57,7 @@ class _SettingsState extends State<Settings> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const About()));
+                goToAbout(context);
               },
               child: ListTile(
                 leading: Container(
@@ -93,7 +86,7 @@ class _SettingsState extends State<Settings> {
               color: Colors.grey.shade400,
               thickness: 1.sp,
             ),
-            ListTile(
+            /*ListTile(
               leading: Container(
                 padding: EdgeInsets.all(4.sp),
                 decoration: BoxDecoration(
@@ -118,9 +111,11 @@ class _SettingsState extends State<Settings> {
             Divider(
               color: Colors.grey.shade400,
               thickness: 1.sp,
-            ),
+            ),*/
             GestureDetector(
-                onTap: _launchURL,
+                onTap: () {
+                  launchUrl();
+                },
                 child: ListTile(
                   leading: Container(
                     padding: EdgeInsets.all(4.sp),
@@ -134,7 +129,7 @@ class _SettingsState extends State<Settings> {
                     ),
                   ),
                   title: Text(
-                    'Read more SMCP',
+                    'Read more about SMCP',
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   trailing: Icon(

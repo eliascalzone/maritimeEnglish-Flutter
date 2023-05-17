@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/views/glossarypage.dart';
-import 'package:fluttermaritime/views/radiocompage.dart';
+import 'package:fluttermaritime/controllers/settingsController.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../model.dart';
+
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+  final Model model;
+  final void Function(BuildContext) goToStandardCom;
+  final void Function(BuildContext) goToRadioCom;
+  final void Function(int) changeScreen;
+
+  const Homepage({super.key, required this.model, required this.goToStandardCom, required this.goToRadioCom, required this.changeScreen});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,8 @@ class Homepage extends StatelessWidget {
           centerTitle: true,
         ),
         backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
-        body: SingleChildScrollView(
+        body: model.currentScreen == 1 ? SettingsController(model: model) :
+        SingleChildScrollView(
           child: SafeArea(
             child: Padding(
                 padding: EdgeInsets.only(
@@ -50,10 +57,7 @@ class Homepage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Glossarypage()));
+                          goToStandardCom(context);
                         },
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -90,10 +94,7 @@ class Homepage extends StatelessWidget {
                       SizedBox(height: 8.h),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Radiocompage()));
+                          goToRadioCom(context);
                         },
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -132,6 +133,20 @@ class Homepage extends StatelessWidget {
                   ],
                 )),
           ),
-        ));
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+        ],
+        currentIndex: model.currentScreen,
+        selectedItemColor: Color.fromRGBO(76, 146, 219, 1),
+        onTap: (int index) {
+          changeScreen(index);
+        },
+      ),
+        );
   }
 }

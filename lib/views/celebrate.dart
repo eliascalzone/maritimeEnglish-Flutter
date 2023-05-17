@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/views/radiocompage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../model.dart';
+
 class Celebrate extends StatelessWidget {
-  const Celebrate({super.key});
+  final Model model;
+  final Function(BuildContext) goBack;
+
+  const Celebrate({super.key, required this.model, required this.goBack});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +29,7 @@ class Celebrate extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Radiocompage()),
-                          (route) => route.isFirst);
+                      goBack(context);
                     },
                     style: ButtonStyle(
                         minimumSize:
