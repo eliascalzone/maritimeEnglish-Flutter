@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/Views/sentencesradio.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/Views/theshipex.dart';
 
-class Radiocompage extends StatefulWidget {
-  const Radiocompage({super.key});
+import '../model.dart';
 
-  @override
-  State<Radiocompage> createState() => _RadiocompageState();
-}
+class Radiocompage extends StatelessWidget {
+  final Model model;
+  final void Function(BuildContext) goToRadioSentences;
+  final void Function(BuildContext) goToShipEx;
 
-class _RadiocompageState extends State<Radiocompage> {
+  const Radiocompage({super.key, required this.model, required this.goToRadioSentences, required this.goToShipEx});
+
   @override
   Widget build(BuildContext context) {
     var images1 = Image.asset(
@@ -30,14 +29,7 @@ class _RadiocompageState extends State<Radiocompage> {
         title: const Text('Radio Communication'),
         titleTextStyle: Theme.of(context).textTheme.headline3,
         centerTitle: true,
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-            )),
+        automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -48,10 +40,7 @@ class _RadiocompageState extends State<Radiocompage> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Radiosentences()));
+                        goToRadioSentences(context);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -80,10 +69,7 @@ class _RadiocompageState extends State<Radiocompage> {
                   SizedBox(height: 10.h),
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ShipExercise()));
+                        goToShipEx(context);
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(

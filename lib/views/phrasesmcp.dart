@@ -1,40 +1,17 @@
 import 'package:flutter/material.dart';
-import '../data/allwordslist.dart';
+import 'package:fluttermaritime/model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
-class Phrasesmcp extends StatefulWidget {
-  const Phrasesmcp({Key? key}) : super(key: key);
+class Phrasesmcp extends StatelessWidget {
+  final Model model;
+  final void Function(String) filter;
+  final void Function(String) speakTts;
 
-  @override
-  State<Phrasesmcp> createState() => _PhrasesmcpState();
-}
-
-class _PhrasesmcpState extends State<Phrasesmcp> {
-  final List<Map<String, dynamic>> _allwords = List.from(allwords);
-  List<Map<String, dynamic>> _foundwords = [];
-  final FlutterTts flutterTts = FlutterTts();
-
-  @override
-  void initState() {
-    super.initState();
-    _foundwords = _allwords;
-  }
-
-  void _filter(String key) {
-    List<Map<String, dynamic>> results = [];
-    if (key.isEmpty) {
-      results = _allwords;
-    } else {
-      results = _allwords
-          .where((element) =>
-              element['name'].toLowerCase().startsWith(key.toLowerCase()))
-          .toList();
-    }
-    setState(() {
-      _foundwords = results;
-    });
-  }
+  const Phrasesmcp(
+      {super.key,
+      required this.model,
+      required this.filter,
+      required this.speakTts});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +28,7 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
               top: 20.sp, left: 30.sp, right: 30.sp, bottom: 20.sp),
           child: Column(children: [
             TextField(
-              onChanged: (value) => _filter(value),
+              onChanged: (value) => filter(value),
               decoration: InputDecoration(
                 hintText: 'Search phrase list starting with ... ',
                 labelStyle: const TextStyle(color: Colors.blue),
@@ -65,43 +42,36 @@ class _PhrasesmcpState extends State<Phrasesmcp> {
               ),
             ),
             Expanded(
-                child: _foundwords.isNotEmpty
+                child: model.foundwords.isNotEmpty
                     ? ListView.builder(
-                        itemCount: _foundwords.length,
+                        itemCount: model.foundwords.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.r)),
-                            key: ValueKey(_foundwords[index]),
+                            key: ValueKey(model.foundwords[index]),
                             margin: const EdgeInsets.symmetric(vertical: 6),
                             elevation: 1,
                             child: ListTile(
                               title: Row(
                                 children: [
-                                  IconButton(
-                                      onPressed: () async {
-                                        await flutterTts.setLanguage("en-US");
-                                        await flutterTts.setSpeechRate(0.5);
-                                        await flutterTts.setVolume(1.0);
-                                        await flutterTts.setPitch(1);
-                                        await flutterTts
-                                            .speak(_foundwords[index]['name']);
-                                      },
-                                      icon: Icon(
-                                        Icons.volume_up_rounded,
-                                        color:
-                                            Color.fromRGBO(76, 146, 219, 1.0),
-                                        size: 24.sp,
-                                      )),
                                   Text(
-                                    _foundwords[index]['name'],
+                                    model.foundwords[index]['name'],
                                     style:
                                         Theme.of(context).textTheme.subtitle1,
                                   ),
+                                  IconButton(
+                                      onPressed: () {
+                                        speakTts(
+                                            model.foundwords[index]['name']);
+                                      },
+                                      icon: const Icon(Icons.volume_up_rounded,
+                                          color: Color.fromRGBO(
+                                              76, 146, 219, 1.0)))
                                 ],
                               ),
                               subtitle: Text(
-                                _foundwords[index]['mean'],
+                                model.foundwords[index]['mean'],
                                 style: Theme.of(context).textTheme.bodyText1,
                               ),
                             ),

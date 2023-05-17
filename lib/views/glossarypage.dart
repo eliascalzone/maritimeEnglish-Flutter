@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/Views/phrasesmcp.dart';
-import 'package:fluttermaritime/Views/praticelisten.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../model.dart';
+
 class Glossarypage extends StatelessWidget {
-  const Glossarypage({super.key});
+  final Model model;
+  final void Function(BuildContext) goToPhrases;
+  final void Function(BuildContext) goToPracticeListen;
+
+  const Glossarypage({super.key, required this.model, required this.goToPhrases, required this.goToPracticeListen});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +35,7 @@ class Glossarypage extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Phrasesmcp()));
+                      goToPhrases(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -65,10 +66,7 @@ class Glossarypage extends StatelessWidget {
                 ),
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Practicelisten()));
+                      goToPracticeListen(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(

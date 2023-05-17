@@ -1,5 +1,5 @@
 //Word list of SMCP
-const List<Map<String, dynamic>> allwords = [
+const List<Map<String, String>> allWordsList = [
   {
     'name': 'Abandon vessel',
     'mean': 'To evacuate crew and passengers from a vessel following a distress'
