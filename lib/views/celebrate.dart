@@ -29,6 +29,8 @@ class Celebrate extends StatelessWidget {
                 ),
                 Text('Score: ${model.score} / 50',
                     style: Theme.of(context).textTheme.headline4),
+                Text('Highscore: ${model.highscore} / 50',
+                    style: Theme.of(context).textTheme.headline4),
                 SizedBox(
                   height: 50.h,
                 ),

@@ -8,6 +8,12 @@ class ShipPart {
 }
 
 class Model {
+
+  Model(bool darkmode, int highscore) {
+    _darkMode = darkmode;
+    _highscore = highscore;
+  }
+
   //Dark Mode
   bool _darkMode = false;
 
@@ -38,6 +44,14 @@ class Model {
 
   void incrementProgress() {
     _progress++;
+  }
+
+  int _highscore = 0;
+
+  int get highscore => _highscore;
+
+  void setHighscore(int newScore){
+    _highscore = newScore;
   }
 
   int _score = 0;

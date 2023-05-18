@@ -5,6 +5,8 @@ import 'package:fluttermaritime/model.dart';
 import 'package:fluttermaritime/views/settingspage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../preferences.dart';
+
 class SettingsController extends StatefulWidget {
   final Model model;
 
@@ -32,10 +34,14 @@ class _SettingsControllerState extends State<SettingsController> {
         context, MaterialPageRoute(builder: (context) => const About()));
   }
 
-  void enableDarkMode(bool value) {
+  Future<void> enableDarkMode(bool value) async {
     setState(() {
       widget.model.enableDarkMode(value);
     });
+    await Preferences.setDarkMode(value);
+  }
+
+  void reloadApp(BuildContext context){
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
@@ -51,6 +57,7 @@ class _SettingsControllerState extends State<SettingsController> {
         model: widget.model,
         launchUrl: launchURL,
         goToAbout: goToAbout,
-        enableDarkMode: enableDarkMode);
+        enableDarkMode: enableDarkMode,
+        reloadApp: reloadApp);
   }
 }

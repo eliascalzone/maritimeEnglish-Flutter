@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:fluttermaritime/preferences.dart';
 import 'package:fluttermaritime/views/celebrate.dart';
 import 'package:fluttermaritime/views/theshipex.dart';
 
@@ -23,6 +24,12 @@ class _ShipExControllerState extends State<ShipExController> {
 
   void nextShip(BuildContext context) {
       if (widget.model.currentIndex == widget.model.shiplist.length - 1) {
+        if(widget.model.score > widget.model.highscore){
+          setState(() {
+            widget.model.setHighscore(widget.model.score);
+          });
+          Preferences.setHighscore(widget.model.highscore);
+        }
         Navigator.push(context, MaterialPageRoute(builder: ((context) => Celebrate(model: widget.model, goBack: goBack))));
       } else {
         setState(() {

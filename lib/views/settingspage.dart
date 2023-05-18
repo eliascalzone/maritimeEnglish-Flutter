@@ -7,12 +7,15 @@ class Settings extends StatelessWidget {
   final void Function() launchUrl;
   final void Function(BuildContext) goToAbout;
   final void Function(bool) enableDarkMode;
+  final void Function(BuildContext) reloadApp;
 
   const Settings(
-      {super.key, required this.model,
+      {super.key,
+      required this.model,
       required this.launchUrl,
       required this.goToAbout,
-      required this.enableDarkMode});
+      required this.enableDarkMode,
+      required this.reloadApp});
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +47,12 @@ class Settings extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               trailing: Switch(
-                value: model.darkMode,
-                activeColor: Colors.blue,
-                onChanged: (value) {
-                  enableDarkMode(value);
-                }
-              ),
+                  value: model.darkMode,
+                  activeColor: Colors.blue,
+                  onChanged: (value) {
+                    enableDarkMode(value);
+                    reloadApp(context);
+                  }),
             ),
             Divider(
               color: Colors.grey.shade400,
