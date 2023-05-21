@@ -19,14 +19,13 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
   final recorder = FlutterSoundRecorder();
   bool isRecorderReady = false;
   final audioPlayer = AudioPlayer();
-  String? latestFile;
 
   Future record() async {
     if (!isRecorderReady) {
       return;
     }
 
-    await recorder.startRecorder(toFile: 'audio');
+    await recorder.startRecorder(toFile: 'audio.mp4', codec: Codec.aacMP4);
   }
 
   Future stop() async {
@@ -35,11 +34,13 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
     }
 
     final path = await recorder.stopRecorder();
-    latestFile = path!;
+    widget.model.setLatestFile(path!);
   }
 
   Future startStopRecord() async {
-    widget.model.setIsRecording();
+    setState(() {
+      widget.model.setIsRecording();
+    });
     if (recorder.isRecording) {
       await stop();
     } else {
@@ -73,7 +74,7 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
   }
 
   Future playLatestFile() async {
-    await audioPlayer.play(latestFile!, isLocal: true);
+    await audioPlayer.play(widget.model.latestFile, isLocal: true, volume: 7);
   }
 
   void setIndex(int index) {

@@ -262,6 +262,14 @@ class Model {
     _isRecording ? _isRecording = false : _isRecording = true;
   }
 
+  String _latestFile = '';
+
+  String get latestFile => _latestFile;
+
+  void setLatestFile(String path){
+    _latestFile = path;
+  }
+
   //Radio Sentences
   final List<Map<String, dynamic>> _allSentences = List.from(all_sentences);
 

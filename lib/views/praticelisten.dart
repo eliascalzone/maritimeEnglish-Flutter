@@ -227,6 +227,7 @@ class Practicelisten extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           record();
+                          print("${model.isRecording}");
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
