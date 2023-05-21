@@ -9,12 +9,16 @@ class Practicelisten extends StatelessWidget {
   final void Function() playLatestFile;
   final void Function() record;
   final void Function(String) speakTts;
+  final void Function() clearPath;
 
   const Practicelisten(
-      {super.key, required this.model,
+      {super.key,
+      required this.model,
       required this.setIndex,
       required this.playLatestFile,
-      required this.record, required this.speakTts});
+      required this.record,
+      required this.speakTts,
+      required this.clearPath});
 
   static const indexArr = [
     0,
@@ -142,7 +146,8 @@ class Practicelisten extends StatelessWidget {
                             height: 40.sp,
                             child: IconButton(
                                 onPressed: () {
-                                  speakTts(model.allwords[model.listenIndex]['name']!);
+                                  speakTts(model.allwords[model.listenIndex]
+                                      ['name']!);
                                 },
                                 icon: Icon(
                                   Icons.volume_up_rounded,
@@ -191,12 +196,19 @@ class Practicelisten extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         onPressed: () {
+                          print(model.latestFile);
                           playLatestFile();
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: EdgeInsets.all(10.sp),
-                        ),
+                        style: model.latestFile == ''
+                            ? ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(10.sp),
+                              )
+                            : ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(10.sp),
+                                backgroundColor: Colors.green
+                              ),
                         child: Icon(
                           Icons.play_arrow,
                           size: 20.sp,
@@ -212,6 +224,7 @@ class Practicelisten extends StatelessWidget {
                         } else {
                           setIndex(model.listenIndex - 1);
                         }
+                        clearPath();
                       },
                       style: OutlinedButton.styleFrom(
                         shape: const CircleBorder(),
@@ -228,10 +241,14 @@ class Practicelisten extends StatelessWidget {
                         onPressed: () {
                           record();
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: EdgeInsets.all(10.sp),
-                        ),
+                        style: model.isRecording
+                            ? ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(10.sp),
+                                backgroundColor: Colors.red)
+                            : ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(10.sp)),
                         child: Icon(
                           model.isRecording ? Icons.stop : Icons.mic,
                           size: 50.sp,
@@ -244,6 +261,7 @@ class Practicelisten extends StatelessWidget {
                         if (model.listenIndex >= model.allwords.length) {
                           setIndex(0);
                         }
+                        clearPath();
                       },
                       style: OutlinedButton.styleFrom(
                         shape: const CircleBorder(),
