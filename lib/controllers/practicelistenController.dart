@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttermaritime/model.dart';
@@ -34,10 +36,13 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
     }
 
     final path = await recorder.stopRecorder();
-    widget.model.setLatestFile(path!);
+    setState(() {
+      widget.model.setLatestFile(path!);
+    });
   }
 
   Future startStopRecord() async {
+    clearPath();
     setState(() {
       widget.model.setIsRecording();
     });
@@ -77,6 +82,23 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
     await audioPlayer.play(widget.model.latestFile, isLocal: true, volume: 7);
   }
 
+  Future<void> deleteFile(File file) async {
+    try {
+      if (await file.exists()) {
+        await file.delete();
+      }
+    } catch (e) {
+      "Error in getting access to the file.";
+    }
+  }
+
+  void clearPath() {
+    deleteFile(File(widget.model.latestFile));
+    setState(() {
+      widget.model.setLatestFile('');
+    });
+  }
+
   void setIndex(int index) {
     setState(() {
       widget.model.setIndex(index);
@@ -100,6 +122,7 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
         setIndex: setIndex,
         playLatestFile: playLatestFile,
         record: startStopRecord,
-        speakTts: speakTts);
+        speakTts: speakTts,
+        clearPath: clearPath);
   }
 }
