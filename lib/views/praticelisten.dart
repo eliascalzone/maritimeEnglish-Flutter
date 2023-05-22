@@ -238,6 +238,7 @@ class Practicelisten extends StatelessWidget {
                     /* Record Button */
                     ElevatedButton(
                         onPressed: () {
+                          clearPath();
                           record();
                         },
                         style: model.isRecording
