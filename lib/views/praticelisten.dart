@@ -196,7 +196,6 @@ class Practicelisten extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         onPressed: () {
-                          print(model.latestFile);
                           playLatestFile();
                         },
                         style: model.latestFile == ''
