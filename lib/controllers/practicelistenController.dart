@@ -42,7 +42,6 @@ class _PracticelistenControllerState extends State<PracticelistenController> {
   }
 
   Future startStopRecord() async {
-    clearPath();
     setState(() {
       widget.model.setIsRecording();
     });

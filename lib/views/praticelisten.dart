@@ -196,7 +196,6 @@ class Practicelisten extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
                         onPressed: () {
-                          print(model.latestFile);
                           playLatestFile();
                         },
                         style: model.latestFile == ''
@@ -239,6 +238,7 @@ class Practicelisten extends StatelessWidget {
                     /* Record Button */
                     ElevatedButton(
                         onPressed: () {
+                          clearPath();
                           record();
                         },
                         style: model.isRecording
