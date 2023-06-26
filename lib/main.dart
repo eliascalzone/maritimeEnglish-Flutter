@@ -2,10 +2,10 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttermaritime/controllers/navigationcontroller.dart';
+import 'package:fluttermaritime/models/navigationmodel.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 import 'package:fluttermaritime/preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,13 +18,13 @@ Future<void> main() async {
   Preferences.getDarkmode() == null ? darkmode = false : darkmode = Preferences.getDarkmode();
   Preferences.getHighscore() == null ? highscore = 0 : highscore = Preferences.getHighscore();
 
-  Model model = Model(darkmode!, highscore!);
+  UserModel model = UserModel(darkmode!, highscore!);
 
   runApp(MyApp(model: model));
 }
 
 class MyApp extends StatelessWidget {
-  final Model model;
+  final UserModel model;
 
   const MyApp({super.key, required this.model});
 
@@ -158,7 +158,7 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 32.sp,
                   fontWeight: FontWeight.bold)),
-                nextScreen: NavigationController(model: model),
+                nextScreen: NavigationController(model: NavigationModel(), usermodel: model),
                 backgroundColor: Color.fromRGBO(76, 146, 219, 1),
                 duration: 2000,
               ),

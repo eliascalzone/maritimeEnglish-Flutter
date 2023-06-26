@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:fluttermaritime/models/shipexmodel.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 import 'package:fluttermaritime/preferences.dart';
 import 'package:fluttermaritime/views/celebrate.dart';
 import 'package:fluttermaritime/views/theshipex.dart';
 
-import '../model.dart';
-
 class ShipExController extends StatefulWidget {
-  final Model model;
-  const ShipExController({super.key, required this.model});
+  final ShipExModel model;
+  final UserModel usermodel;
+  const ShipExController({super.key, required this.model, required this.usermodel});
 
   @override
   State<ShipExController> createState() => _ShipExControllerState();
@@ -24,13 +25,13 @@ class _ShipExControllerState extends State<ShipExController> {
 
   void nextShip(BuildContext context) {
       if (widget.model.currentIndex == widget.model.shiplist.length - 1) {
-        if(widget.model.score > widget.model.highscore){
+        if(widget.model.score > widget.usermodel.highscore){
           setState(() {
-            widget.model.setHighscore(widget.model.score);
+            widget.usermodel.setHighscore(widget.model.score);
           });
-          Preferences.setHighscore(widget.model.highscore);
+          Preferences.setHighscore(widget.usermodel.highscore);
         }
-        Navigator.push(context, MaterialPageRoute(builder: ((context) => Celebrate(model: widget.model, goBack: goBack))));
+        Navigator.push(context, MaterialPageRoute(builder: ((context) => Celebrate(model: widget.model, goBack: goBack, usermodel: widget.usermodel))));
       } else {
         setState(() {
           widget.model.incrementIndex();

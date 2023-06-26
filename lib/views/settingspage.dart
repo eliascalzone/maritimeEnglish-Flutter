@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttermaritime/model.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 
 class Settings extends StatelessWidget {
-  final Model model;
+  final UserModel model;
   final void Function() launchUrl;
   final void Function(BuildContext) goToAbout;
   final void Function(bool) enableDarkMode;

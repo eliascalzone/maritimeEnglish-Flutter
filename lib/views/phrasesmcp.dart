@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermaritime/model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttermaritime/models/phrasesmodel.dart';
 
 class Phrasesmcp extends StatelessWidget {
-  final Model model;
+  final PhrasesModel model;
   final void Function(String) filter;
   final void Function(String) speakTts;
 

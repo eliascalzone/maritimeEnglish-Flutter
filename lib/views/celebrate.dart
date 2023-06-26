@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../model.dart';
+import 'package:fluttermaritime/models/shipexmodel.dart';
 
 class Celebrate extends StatelessWidget {
-  final Model model;
+  final ShipExModel model;
+  final UserModel usermodel;
   final Function(BuildContext) goBack;
 
-  const Celebrate({super.key, required this.model, required this.goBack});
+  const Celebrate({super.key, required this.model, required this.goBack, required this.usermodel});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class Celebrate extends StatelessWidget {
                 SizedBox(height: 10.h),
                 /*Text('Score: ${model.score} / 50',
                     style: Theme.of(context).textTheme.headline4),*/
-                Text('Highscore: ${model.highscore} / 50 ',
+                Text('Highscore: ${usermodel.highscore} / 50 ',
                     style: Theme.of(context).textTheme.headline4),
                 SizedBox(
                   height: 50.h,

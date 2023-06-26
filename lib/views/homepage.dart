@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/controllers/settingsController.dart';
+import 'package:fluttermaritime/models/navigationmodel.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../model.dart';
-
 class Homepage extends StatelessWidget {
-  final Model model;
+  final NavigationModel model;
+  final UserModel usermodel;
   final void Function(BuildContext) goToStandardCom;
   final void Function(BuildContext) goToRadioCom;
   final void Function(int) changeScreen;
 
-  const Homepage({super.key, required this.model, required this.goToStandardCom, required this.goToRadioCom, required this.changeScreen});
+  const Homepage({super.key, required this.model, required this.goToStandardCom, required this.goToRadioCom, required this.changeScreen, required this.usermodel});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class Homepage extends StatelessWidget {
           centerTitle: true,
         ),
         backgroundColor: Color.fromRGBO(245, 247, 250, 1.0),
-        body: model.currentScreen == 1 ? SettingsController(model: model) :
+        body: model.currentScreen == 1 ? SettingsController(model: usermodel) :
         SingleChildScrollView(
           child: SafeArea(
             child: Padding(

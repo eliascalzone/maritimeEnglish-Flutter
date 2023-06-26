@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../model.dart';
-
 class Glossarypage extends StatelessWidget {
-  final Model model;
   final void Function(BuildContext) goToPhrases;
   final void Function(BuildContext) goToPracticeListen;
 
-  const Glossarypage({super.key, required this.model, required this.goToPhrases, required this.goToPracticeListen});
+  const Glossarypage({super.key, required this.goToPhrases, required this.goToPracticeListen});
 
   @override
   Widget build(BuildContext context) {

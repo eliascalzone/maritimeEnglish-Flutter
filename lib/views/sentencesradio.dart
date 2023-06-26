@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../model.dart';
+import 'package:fluttermaritime/models/sentencesmodel.dart';
 
 class Radiosentences extends StatelessWidget {
-  final Model model;
+  final SentencesModel model;
   final void Function(String) filter;
   final void Function(String) speakTts;
 

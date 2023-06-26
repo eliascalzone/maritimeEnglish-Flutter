@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../model.dart';
-
 class Radiocompage extends StatelessWidget {
-  final Model model;
   final void Function(BuildContext) goToRadioSentences;
   final void Function(BuildContext) goToShipEx;
 
   const Radiocompage(
       {super.key,
-      required this.model,
       required this.goToRadioSentences,
       required this.goToShipEx});
 

@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:fluttermaritime/model.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_sound/flutter_sound.dart';
+import 'package:fluttermaritime/models/recordingmodel.dart';
 import 'package:fluttermaritime/views/praticelisten.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PracticelistenController extends StatefulWidget {
-  final Model model;
+  final RecordingModel model;
   const PracticelistenController({super.key, required this.model});
 
   @override

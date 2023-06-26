@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:fluttermaritime/model.dart';
+import 'package:fluttermaritime/models/sentencesmodel.dart';
 import 'package:fluttermaritime/views/sentencesradio.dart';
 
 class SentencesController extends StatefulWidget{
-  final Model model;
+  final SentencesModel model;
 
   const SentencesController({super.key, required this.model});
 

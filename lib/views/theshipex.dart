@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../model.dart';
+import 'package:fluttermaritime/models/shipexmodel.dart';
 
 class ShipExercise extends StatelessWidget {
-  final Model model;
+  final ShipExModel model;
   final void Function(BuildContext) goBack;
   final void Function(ShipPart, ShipPart) onAccept;
   final void Function(BuildContext) nextShip;

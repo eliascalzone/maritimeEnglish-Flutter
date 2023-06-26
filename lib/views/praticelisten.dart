@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../model.dart';
+import 'package:fluttermaritime/data/allwordslist.dart';
+import 'package:fluttermaritime/models/recordingmodel.dart';
 
 class Practicelisten extends StatelessWidget {
-  final Model model;
+  final RecordingModel model;
   final void Function(int) setIndex;
   final void Function() playLatestFile;
   final void Function() record;
@@ -77,7 +77,7 @@ class Practicelisten extends StatelessWidget {
         },
         style: TextButton.styleFrom(
             backgroundColor:
-                (model.allwords[model.listenIndex]['name']![0] == letterArr[i])
+                (allWordsList[model.listenIndex]['name']![0] == letterArr[i])
                     ? const Color.fromARGB(30, 33, 149, 243)
                     : const Color.fromARGB(0, 33, 149, 243)),
         child: Text(
@@ -146,7 +146,7 @@ class Practicelisten extends StatelessWidget {
                             height: 40.sp,
                             child: IconButton(
                                 onPressed: () {
-                                  speakTts(model.allwords[model.listenIndex]
+                                  speakTts(allWordsList[model.listenIndex]
                                       ['name']!);
                                 },
                                 icon: Icon(
@@ -161,7 +161,7 @@ class Practicelisten extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              model.allwords[model.listenIndex]['name']!,
+                              allWordsList[model.listenIndex]['name']!,
                               style: Theme.of(context).textTheme.headline2,
                             ),
                           )
@@ -181,7 +181,7 @@ class Practicelisten extends StatelessWidget {
                         height: 8.sp,
                       ),
                       Text(
-                        model.allwords[model.listenIndex]['mean']!,
+                        allWordsList[model.listenIndex]['mean']!,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                       SizedBox(
@@ -219,7 +219,7 @@ class Practicelisten extends StatelessWidget {
                     OutlinedButton(
                       onPressed: () {
                         if (model.listenIndex == 0) {
-                          setIndex(model.allwords.length - 1);
+                          setIndex(allWordsList.length - 1);
                         } else {
                           setIndex(model.listenIndex - 1);
                         }
@@ -258,7 +258,7 @@ class Practicelisten extends StatelessWidget {
                     OutlinedButton(
                       onPressed: () {
                         setIndex(model.listenIndex + 1);
-                        if (model.listenIndex >= model.allwords.length) {
+                        if (model.listenIndex >= allWordsList.length) {
                           setIndex(0);
                         }
                         clearPath();

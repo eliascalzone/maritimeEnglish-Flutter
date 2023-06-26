@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermaritime/main.dart';
+import 'package:fluttermaritime/models/usermodel.dart';
 import 'package:fluttermaritime/views/about.dart';
-import 'package:fluttermaritime/model.dart';
 import 'package:fluttermaritime/views/settingspage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../preferences.dart';
 
 class SettingsController extends StatefulWidget {
-  final Model model;
+  final UserModel model;
 
   const SettingsController({super.key, required this.model});
 

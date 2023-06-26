@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:fluttermaritime/models/phrasesmodel.dart';
 import 'package:fluttermaritime/views/phrasesmcp.dart';
 
-import '../model.dart';
-
 class PhrasesController extends StatefulWidget {
-  final Model model;
+  final PhrasesModel model;
   const PhrasesController({super.key, required this.model});
 
   @override
