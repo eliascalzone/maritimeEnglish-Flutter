@@ -1,9 +1,0 @@
-class Model {
-
-  //Navigation
-  
-
-  
-
-
-}
